@@ -4,9 +4,9 @@
 #include "info.h"
 
 #include <stdio.h>
-#include <time.h>
+#include <sys/time.h>
 
-int main(int* argc, char** argv){
+int main(int argc, char** argv){
 	
 	MPI_Init(&argc, &argv);
 	initRank();
@@ -15,7 +15,7 @@ int main(int* argc, char** argv){
 	fprintf(stdout, "myRank: %d\n", getMyRank());
 
 	beginTimer(total);
-	
+
 	Parameter* para = parseParameter();
 
 	beginTimer(loop);

@@ -1,7 +1,7 @@
 #include "timer.h"
 
 #include <stdio.h>
-#include <time.h>
+#include <sys/time.h>
 #include <string.h>
 
 //计时器数组
