@@ -1,6 +1,8 @@
 #include "parameter.h"
 #include "getinput.h"
 
+#include <stdlib.h>
+
 // 从文件中解析出各参数
 Parameter parseParameter(){
 

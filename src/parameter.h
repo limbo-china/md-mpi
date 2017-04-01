@@ -4,8 +4,6 @@
 #ifndef PARAMETER_H_
 #define PARAMETER_H_
 
-#include <stdio.h>
-
 #define INPUTFILE_PATH "./input/parameter"
 
 typedef struct ParaStr{
