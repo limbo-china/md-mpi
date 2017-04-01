@@ -1,3 +1,6 @@
+// getinput.h
+// 从文件中读取参数
+
 #ifndef GETINPUT_H_
 #define GETINPUT_H_
 
@@ -11,9 +14,7 @@
 
 // 从输入文件中读取单独一个参数对应的值                                    
 // 参数：文件路径; 参数名称; 存储空间                        
-// 返回：0,未找到; 1,找到符合名称的值                                      
+// 返回：0,未找到; 1,找到符合名称的值; 2,使用默认值                                     
 int getInputValue(const char *file_path, const char *para_name, char *buff);
-
-#define INPUTFILE_PATH "./input/parameter"
 
 #endif

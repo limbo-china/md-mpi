@@ -7,13 +7,14 @@
 //               = 号前后不能有空格                                       
 //              每行最大字符数为 LINE_MAX_LENGTH                          
 //              参数名最大字符数为 NAME_MAX_LENGTH,超长将丢弃该参数       
-//              参数值最大字符数为 VALUE_MAX_LENGTH,超长将截断         
+//              参数值最大字符数为 VALUE_MAX_LENGTH,超长将截断  
+//              当参数值为'default'时，使用默认参数值       
 /**************************************************************************/
 #include "getinput.h"
 
 // 从输入文件中读取单独一个参数对应的值                                    
 // 参数：文件路径; 参数名称; 存储空间                        
-// 返回：0,未找到; 1,找到符合名称的值 
+// 返回：0,未找到; 1,找到符合名称的值; 2,使用默认值
 int getInputValue(const char* file_path, const char* para_name,
     char* buff)
 {
@@ -62,6 +63,10 @@ int getInputValue(const char* file_path, const char* para_name,
             strncpy(buff, linebuf + (leave_num + 1),
                 len);
             *(buff + len) = '\0';
+            if(strcmp(buff,"default") == 0){
+                flag = 2;
+                break;
+            }
             flag = 1;
             break;
         }

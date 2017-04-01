@@ -21,7 +21,10 @@ typedef struct TimerStr{
 	uint64_t delta; //最近一次调用的时间消耗
 }Timer;
 
-void beginTimer(const enum TimerPtr ptr);
+// 启动定时器
+void beginTimer(const enum TimerPtr ptr); 
+
+// 停止定时器
 void endTimer(const enum TimerPtr ptr);
 
 #endif

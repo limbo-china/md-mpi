@@ -4,11 +4,14 @@
 #include <time.h>
 #include <string.h>
 
-static Timer timers[nums]; //计时器数组
+//计时器数组
+static Timer timers[nums]; 
 
-static uint64_t getUsTime(); //获取当前时间(us)
-static double usecToSec(uint64_t t); //us转化为s
-
+//获取当前时间(us)
+static uint64_t getUsTime(); 
+//us转化为s
+static double usecToSec(uint64_t t); 
+ 
 static uint64_t getUsTime(){
 	struct timeval t;
    	gettimeofday(&t, (struct timezone *)NULL);
@@ -19,10 +22,12 @@ static double usecToSec(uint64_t t){
 	return t*1.0e-6;
 }
 
+// 启动定时器
 void beginTimer(const enum TimerPtr ptr){
 	timers[ptr].begin = getUsTime();
 }
 
+// 停止定时器
 void endTimer(const enum TimerPtr ptr){
 	timers[ptr].delta = getUsTime() - timers[ptr].begin;
 	timers[ptr].global = timers[ptr].global + timers[ptr].delta;
