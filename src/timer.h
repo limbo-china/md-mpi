@@ -3,7 +3,9 @@
 
 #ifndef TIMER_H_
 #define TIMER_H_
-	
+
+#include <inttypes.h>
+
 //计时器数组指针
 enum TimerPtr{
 	total,
