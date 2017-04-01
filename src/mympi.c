@@ -1,6 +1,4 @@
-#include "mpi.h"
-
-#include <mpi.h>
+#include "mympi.h"
 
 // 当前进程编号
 static int myRank = 0;

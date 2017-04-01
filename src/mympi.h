@@ -1,8 +1,10 @@
-// mpi.h
+// mympi.h
 // 程序并行的一些基本函数
 
-#ifndef MPI_H_
-#define MPI_H_
+#ifndef MYMPI_H_
+#define MYMPI_H_
+
+#include <mpi.h>
 
 // 获取并行的总进程数
 int getRankNums();
