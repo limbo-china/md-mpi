@@ -14,15 +14,18 @@ int main(int argc, char** argv){
 	fprintf(stdout, "rankNums: %d\n", getRankNums());
 	fprintf(stdout, "myRank: %d\n", getMyRank());
 
+	parallelBarrier("Begin to read parameters.");
+
 	beginTimer(total);
 
-	Parameter* para = parseParameter();
-
+	Parameter* para = readParameter();
+	printPara(stdout,para);
+	
 	beginTimer(loop);
 	sleep(5);
 	endTimer(loop);
 
-	printPara(stdout,para);
+	
 
 	endTimer(total);
 

@@ -25,6 +25,6 @@ typedef struct ParaStr{
 }Parameter;
 
 // 从文件中解析出各参数
-Parameter* parseParameter(); 
+Parameter* readParameter(); 
 
 #endif

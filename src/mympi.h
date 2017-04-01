@@ -15,6 +15,9 @@ int getMyRank();
 // 判断当前进程是否为0进程
 int ifZeroRank();
 
-//获取进程数和编号
+// 获取进程数和编号
 void initRank();
+
+// 同步所有进程
+void parallelBarrier(const char* info);
 #endif
