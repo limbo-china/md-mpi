@@ -1,4 +1,5 @@
 #include "info.h"
+#include "mympi.h"
 #include "parameter.h"
 
 // 打印模拟时所需的各参数信息

@@ -66,4 +66,6 @@ Parameter parseParameter(){
 
 	if(getInputValue(INPUTFILE_PATH, "initialDisplacement", value_buff) == 1)
 		para.initDisplace = strtod(value_buff, NULL);
+
+	return para;
 }
