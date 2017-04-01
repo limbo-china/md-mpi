@@ -28,5 +28,7 @@ int main(int argc, char** argv){
 
 	fprintf(stdout, "total time: %g\n",getGlobalTime(total));
 	fprintf(stdout, "loop time: %g\n",getGlobalTime(loop));
+
+	MPI_Finalize();
 	return 0;
 }
