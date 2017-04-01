@@ -14,7 +14,7 @@ static void printTimeInfo(const char* info);
 static void printTimeInfo(const char* info){
    
    time_t t= time(NULL);
-   fprintf(stdout, "Time: %s\nInfo: %s\n", ctime(&t), info);
+   fprintf(stdout, "Time: %sInfo: %s\n\n", ctime(&t), info);
    fflush(stdout);
 
 }
