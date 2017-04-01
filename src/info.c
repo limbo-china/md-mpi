@@ -1,6 +1,7 @@
 #include "info.h"
 #include "mympi.h"
-#include "parameter.h"
+
+#include <stdio.h>
 
 // 打印模拟时所需的各参数信息
 void printPara(FILE* f, Parameter* para){
