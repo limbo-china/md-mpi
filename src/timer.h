@@ -29,4 +29,7 @@ void beginTimer(const enum TimerPtr ptr);
 // 停止定时器
 void endTimer(const enum TimerPtr ptr);
 
+// 获取定时器总时间
+double getGlobalTime(const enum TimerPtr ptr);
+
 #endif

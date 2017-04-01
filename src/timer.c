@@ -1,7 +1,7 @@
 #include "timer.h"
 
 #include <stdio.h>
-#include <sys/time.h>
+#include <time.h>
 #include <string.h>
 
 //计时器数组
@@ -31,4 +31,9 @@ void beginTimer(const enum TimerPtr ptr){
 void endTimer(const enum TimerPtr ptr){
 	timers[ptr].delta = getUsTime() - timers[ptr].begin;
 	timers[ptr].global = timers[ptr].global + timers[ptr].delta;
+}
+
+// 获取定时器总时间
+double getGlobalTime(const enum TimerPtr ptr){
+	return usecToSec(timers[ptr].global);
 }
