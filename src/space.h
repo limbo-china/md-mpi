@@ -20,14 +20,11 @@ typedef struct SpacialStr{
 	double3 globalLength; //整个体系的长度
 
 	int3 globalProcNum; // 各坐标轴上分解的空间数
-	int3 procCoord; // 本进程对应的空间位置
+	int3 position; // 本进程对应的空间位置
 }Spacial;
 
 // 空间分解，将模拟的体系分解成若干个部分，每个部分由一个进程处理
-Spacial* initSpace(Parameter* para, Lattice* lattice){
-
-	
-}
+void initSpace(Parameter* para, Lattice* lattice, Spacial* space);
 
 
 #endif

@@ -17,15 +17,8 @@ System* initSystem(Parameter* para){
 
    	initPotInfo(sys->potential);
    	initLatticeInfo(sys->lattice);
+    initSpace(para, sys->lattice, sys->space);
 
-
-   real3 globalExtent;
-   globalExtent[0] = cmd.nx * latticeConstant;
-   globalExtent[1] = cmd.ny * latticeConstant;
-   globalExtent[2] = cmd.nz * latticeConstant;
-
-   sim->domain = initDecomposition(
-      cmd.xproc, cmd.yproc, cmd.zproc, globalExtent);
 
    sim->boxes = initLinkCells(sim->domain, sim->pot->cutoff);
    sim->atoms = initAtoms(sim->boxes);

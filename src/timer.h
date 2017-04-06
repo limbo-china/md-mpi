@@ -13,7 +13,7 @@ enum TimerPtr{
 	computeForce,
 	atomExchange,
 	reduce,
-	nums
+	timerNums
 };
 
 //计时器结构体,单位均为us

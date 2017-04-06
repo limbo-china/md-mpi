@@ -5,7 +5,7 @@
 #include <string.h>
 
 //计时器数组
-static Timer timers[nums]; 
+static Timer timers[timerNums]; 
 
 //获取当前时间(us)
 static uint64_t getUsTime(); 
