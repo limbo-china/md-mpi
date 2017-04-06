@@ -20,7 +20,6 @@ Parameter* readParameter(){
 	para->stepNums = 100;
 	para->printNums = 10;
 	para->stepTime = 1.0;
-	para->latConst = 3.615;
 	para->initTemper = 600.0;
 	para->initDisplace = 0.0;
 
@@ -57,9 +56,6 @@ Parameter* readParameter(){
 
 	if(getInputValue(INPUTFILE_PATH, "stepTime", value_buff) == 1)
 		para->stepTime = strtod(value_buff, NULL);
-
-	if(getInputValue(INPUTFILE_PATH, "latticeConstant", value_buff) == 1)
-		para->latConst = strtod(value_buff, NULL);
 
 	if(getInputValue(INPUTFILE_PATH, "initialTemperature", value_buff) == 1)
 		para->initTemper = strtod(value_buff, NULL);
