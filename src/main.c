@@ -13,7 +13,8 @@ int main(int argc, char** argv){
 
 	fprintf(stdout, "rankNums: %d\n", getRankNums());
 	fprintf(stdout, "myRank: %d\n", getMyRank());
-	MPI_Barrier(MPI_COMM_WORLD);
+
+	// 同步不起作用？
 	parallelBarrier("Begin to read parameters.");
 
 	beginTimer(total);
