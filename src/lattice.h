@@ -4,8 +4,6 @@
 #ifndef LATTICE_H_
 #define LATTICE_H_
 
-#include <stdlib.h>
-
 // 晶格结构体
 typedef struct LatticeStr{
 	

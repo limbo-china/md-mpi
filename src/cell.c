@@ -1,5 +1,9 @@
 #include "cell.h"
 
+#include "space.h"
+#include "potential.h"
+#include <stdlib.h>
+
 // 初始化细胞链表
 void initCells(Spacial* space, Potential* potential, Cell* cells){
 

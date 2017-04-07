@@ -1,5 +1,7 @@
 #include "lattice.h"
 
+#include <stdlib.h>
+
 // 初始化晶格结构体
 void initLatticeInfo(Lattice* lattice){
 

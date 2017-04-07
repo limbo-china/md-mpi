@@ -4,9 +4,7 @@
 #ifndef POTENTIAL_H_
 #define POTENTIAL_H_
 
-#include "system.h"
-
-#include <stdlib.h>
+System;
 
 typedef struct PotentialStr{
 	

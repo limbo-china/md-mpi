@@ -1,5 +1,7 @@
 #include "potential.h"
 
+#include <stdlib.h>
+
 // 初始化势函数结构体
 void initPotInfo(Potential* potential){
 

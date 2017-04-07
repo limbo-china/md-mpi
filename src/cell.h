@@ -5,9 +5,10 @@
 #define CELL_H_
 
 #include "mytype.h"
-#include "space.h"
-#include "potential.h"
-#include <stdlib.h>
+
+Spacial;
+Potential;
+Cell;
 
 // 细胞链表结构体
 typedef struct CellStr{
