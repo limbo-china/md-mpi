@@ -13,7 +13,7 @@ void initPotInfo(Potential* potential){
    	potential->epsilon = 0.167;
    	potential->cutoff = 2.5*potential->sigma;
 
-   	potential->computeforce = computeForce;
+   	//potential->computeforce = computeForce;
    	//potential->free = potentialFree;
 }
 

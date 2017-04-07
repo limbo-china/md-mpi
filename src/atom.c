@@ -39,7 +39,6 @@ void initAtoms(struct CellStr* cells, Atom* atoms){
 void distributeAtoms(struct SystemStr* sys, struct ParameterStr* para){
  
    	double latticeConst = sys->lattice->latticeConst;
-   	int xLat = para->xLat;
    	int yLat = para->yLat;
    	int zLat = para->zLat;
    	double* myMin = sys->space->myMin;
@@ -80,7 +79,7 @@ void distributeAtoms(struct SystemStr* sys, struct ParameterStr* para){
                		if (zpos < myMin[2] || zpos >= myMax[2]) continue;
 
                		// 计算原子的id
-               		int id = ib+n*(iz+zLat*(iy+yLat*(ix)));
+               		//int id = ib+n*(iz+zLat*(iy+yLat*(ix)));
 
                		xyzpos[0] = xpos;
                		xyzpos[1] = ypos;
