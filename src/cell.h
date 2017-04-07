@@ -26,6 +26,6 @@ typedef struct CellStr{
 }Cell;
 
 // 初始化细胞链表
-void initCells(Spacial* space, Potential* potential, Cell* cells);
+void initCells(struct SpacialStr* space, struct PotentialStr* potential, struct CellStr* cells);
 
 #endif

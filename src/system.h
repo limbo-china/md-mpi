@@ -4,11 +4,13 @@
 #ifndef SYSTEM_H_
 #define SYSTEM_H_
 
-struct PotentialStr;
-struct LatticeStr;
-struct SpacialStr;
-struct CellStr;
-struct AtomStr;
+#include "potential.h"
+#include "lattice.h"
+#include "parameter.h"
+#include "space.h"
+#include "cell.h"
+#include "atom.h"
+#include "info.h"
 
 // 所模拟的分子体系对于的结构体
 typedef struct SystemStr

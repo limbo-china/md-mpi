@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 // 空间分解，将模拟的体系分解成若干个部分，每个部分由一个进程处理
-void initSpace(Parameter* para, Lattice* lattice, Spacial* space){
+void initSpace(struct ParameterStr* para, struct LatticeStr* lattice, struct SpacialStr* space){
 	
 	int myRank = getMyRank();
 

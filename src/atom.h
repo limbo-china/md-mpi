@@ -28,9 +28,9 @@ typedef struct AtomStr{
 }Atom;
 
 // 初始化原子信息
-void initAtoms(Cell* cells, Atom* atoms);
+void initAtoms(struct CellStr* cells, Atom* atoms);
 
 // 分配各原子到对应的细胞中
-void distributeAtoms(System* sys, Parameter* para);
+void distributeAtoms(struct SystemStr* sys, struct ParameterStr* para);
 
 #endif
