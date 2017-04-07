@@ -6,9 +6,9 @@
 
 #include "mytype.h"
 
-Spacial;
-Potential;
-Cell;
+struct SpacialStr;
+struct PotentialStr;
+struct CellStr;
 
 // 细胞链表结构体
 typedef struct CellStr{

@@ -6,9 +6,9 @@
 
 #include "mytype.h"
 
-Parameter;
-Lattice;
-Spacial;
+struct ParameterStr;
+struct LatticeStr;
+struct SpacialStr;
 
 //空间分解结构体
 typedef struct SpacialStr{

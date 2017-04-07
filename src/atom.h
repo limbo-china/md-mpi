@@ -9,10 +9,9 @@
 
 #include "mytype.h"
 
-Cell;
-Atom;
-System;
-Parameter;
+struct CellStr;
+struct SystemStr;
+struct ParameterStr;
 
 typedef struct AtomStr{
 
