@@ -27,7 +27,7 @@ typedef struct SystemStr
 
    	Atom* atoms;          // 存储原子的相关信息数据
      	
-   	HaloExchange* atomExchange;  // 通信区域，交换原子信息
+   	//HaloExchange* atomExchange;  // 通信区域，交换原子信息
    
 } System;
 
