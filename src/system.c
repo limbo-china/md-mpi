@@ -16,7 +16,10 @@ System* initSystem(Parameter* para){
     //sys->atomExchange = NULL;
 
    	initPotInfo(sys->potential);
-    printPotential(stdout, sys->potential);
+    if(sys->potential){
+        fprintf(stdout, "potential success.\n");
+        printPotential(stdout, sys->potential);
+    }
    	initLatticeInfo(sys->lattice);
     printLattice(stdout, sys->lattice);
     initSpace(para, sys->lattice, sys->space);
