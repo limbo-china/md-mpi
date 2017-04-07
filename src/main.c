@@ -2,6 +2,7 @@
 #include "mympi.h"
 #include "parameter.h"
 #include "info.h"
+#include "system.h"
 
 #include <stdio.h>
 #include <unistd.h>
@@ -24,8 +25,8 @@ int main(int argc, char** argv){
 
 	beginTimer(loop);
 	sleep(5);
+	System* sys = initSystem(para);
 	endTimer(loop);
-
 	
 
 	endTimer(total);

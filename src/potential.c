@@ -3,7 +3,7 @@
 // 初始化势函数结构体
 void initPotInfo(Potential* potential){
 
-	potential = malloc(sizeof(Potential));
+	potential = (Potential*)malloc(sizeof(Potential));
 	
 	strcpy(potential->potentialType,"Lennard-Jones");
 	potential->sigma = 2.315;	                  

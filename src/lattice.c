@@ -3,7 +3,7 @@
 // 初始化晶格结构体
 void initLatticeInfo(Lattice* lattice){
 
-	lattice = malloc(sizeof(Lattice));
+	lattice = (Lattice*)malloc(sizeof(Lattice));
 
 	strcpy(lattice->latticeType, "FCC");
 	strcpy(lattice->atomName, "Cu");

@@ -19,7 +19,7 @@ void initSpace(Parameter* para, Lattice* lattice, Spacial* space){
 		exit(procNum);
 	}
 
-	space = malloc(sizeof(Spacial));
+	space = (Spacial*)malloc(sizeof(Spacial));
 	space->globalProcNum[0] = para->xProc;
 	space->globalProcNum[1] = para->yProc;
 	space->globalProcNum[2] = para->zProc;

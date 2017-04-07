@@ -6,7 +6,7 @@
 // 从文件中解析出各参数
 Parameter* readParameter(){
 
-	Parameter* para = malloc(sizeof(Parameter));
+	Parameter* para = (Parameter*)malloc(sizeof(Parameter));
 
 	// 初始化参数结构体（默认值）
 	memset(para->potentialName, 0, 128);
