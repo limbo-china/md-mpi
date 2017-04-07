@@ -6,7 +6,7 @@
 
 #define INPUTFILE_PATH "./input/parameter"
 
-typedef struct ParaStr{
+typedef struct ParameterStr{
 
    	char potentialName[128]; // 势函数名
    	int xLat;             // X轴上的晶格数
