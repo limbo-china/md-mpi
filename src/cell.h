@@ -7,6 +7,7 @@
 #include "mytype.h"
 #include "space.h"
 #include "potential.h"
+#include <stdlib.h>
 
 // 细胞链表结构体
 typedef struct CellStr{

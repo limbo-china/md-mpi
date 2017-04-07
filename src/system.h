@@ -7,7 +7,7 @@
 // 所模拟的分子体系对于的结构体
 typedef struct SystemStr
 {  
-	Energy* energy;     // 系统总能量
+	//Energy* energy;     // 系统总能量
 
 	Potential* potential;	  // 势函数相关数据
 

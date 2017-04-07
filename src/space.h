@@ -7,6 +7,7 @@
 #include "mytype.h"
 #include "parameter.h"
 #include "lattice.h"
+#include <stdlib.h>
 
 //空间分解结构体
 typedef struct SpacialStr{

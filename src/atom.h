@@ -7,6 +7,7 @@
 #include "mytype.h"
 #include "cell.h"
 #include "system.h"
+#include <stdlib.h>
 
 // 每个细胞中的原子数最大值
 #define MAXPERCELL 64

@@ -1,5 +1,6 @@
 #include "atom.h"
 #include "timer.h"
+#include "parameter.h"
 
 // 初始化原子信息
 void initAtoms(Cell* cells, Atom* atoms){

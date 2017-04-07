@@ -7,11 +7,14 @@
 #include "atom.h"
 #include "info.h"
 
+#include <stdlib.h>
+#include <stdio.h>
+
 //初始化模拟体系
 System* initSystem(Parameter* para){
 
 	System* sys = (System*)malloc(sizeof(System));
-	sys->energy = NULL;
+	//sys->energy = NULL;
 	sys->potential = NULL;
 	sys->lattice = NULL;
     sys->space = NULL;
