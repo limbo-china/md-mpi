@@ -5,6 +5,7 @@
 #include "system.h"
 
 #include <stdlib.h>
+#include <math.h>
 
 // 初始化原子信息
 void initAtoms(struct CellStr* cells, Atom* atoms){
@@ -37,10 +38,10 @@ void initAtoms(struct CellStr* cells, Atom* atoms){
 // 分配各原子到对应的细胞中
 void distributeAtoms(struct SystemStr* sys, struct ParameterStr* para){
  
-   	latticeConst = sys->lattice->latticeConst;
-   	xLat = para->xLat;
-   	yLat = para->yLat;
-   	zLat = para->zLat;
+   	double latticeConst = sys->lattice->latticeConst;
+   	int xLat = para->xLat;
+   	int yLat = para->yLat;
+   	int zLat = para->zLat;
    	double* myMin = sys->space->myMin;
    	double* myMax = sys->space->myMax;
 

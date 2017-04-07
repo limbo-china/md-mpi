@@ -1,5 +1,7 @@
 #include "error.h"
 
+#include <stdio.h>
+
 const char* errInfo[errNums] ={
 	"no error",
 	"xProcNum * yProcNum * zProcNum != rankNum",

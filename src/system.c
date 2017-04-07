@@ -13,7 +13,7 @@ System* initSystem(Parameter* para){
     sys->space = NULL;
     sys->cells = NULL;
     sys->atoms = NULL;
-    sys->atomExchange = NULL;
+    //sys->atomExchange = NULL;
 
    	initPotInfo(sys->potential);
     printPotential(stdout, sys->potential);
