@@ -17,7 +17,7 @@ typedef struct AtomStr{
 	double3*  pos;     // 原子坐标
    	double3*  momenta;     // 原子动量
    	double3*  force;     // 原子受到的作用力 
-   	double3*  pot;     // 原子势能
+   	double*  pot;     // 原子势能
 
 	int myNum; // 本进程空间中的总原子数
 	int totalNum; // 整个体系的总原子数

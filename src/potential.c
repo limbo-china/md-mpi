@@ -11,7 +11,7 @@ void initPotInfo(Potential* potential){
    	potential->cutoff = 2.5*potential->sigma;
 
    	potential->computeforce = computeForce;
-   	potential->free = potentialFree;
+   	//potential->free = potentialFree;
 }
 
 // 释放结构体空间
