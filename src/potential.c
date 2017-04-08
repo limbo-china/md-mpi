@@ -5,13 +5,12 @@
 #include <stdio.h>
 
 // 初始化势函数结构体
-void initPotInfo(Potential* potential){
+void initPotInfo(Potential** pot){
 
-	fprintf(stdout, "Potential size : %d\n",sizeof(Potential) );
-	potential = (Potential*)malloc(sizeof(Potential));
+
+	*pot = (Potential*)malloc(sizeof(Potential));
+	Potential* potential= *pot;
 	
-	if(potential)
-		fprintf(stdout, "Potential size : %d\n",sizeof(Potential) );
 	strcpy(potential->potentialType,"Lennard-Jones");
 	potential->sigma = 2.315;	                  
    	potential->epsilon = 0.167;

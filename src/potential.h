@@ -22,7 +22,7 @@ typedef struct PotentialStr{
 }Potential;
 
 // 初始化势函数结构体
-void initPotInfo(Potential* potential);
+void initPotInfo(Potential** pot);
 
 // 释放结构体空间
 void potentialFree(Potential* potential);

@@ -15,16 +15,13 @@ System* initSystem(Parameter* para){
     sys->atoms = NULL;
     //sys->atomExchange = NULL;
 
-   	initPotInfo(sys->potential);
-    if(sys->potential){
-        fprintf(stdout, "potential success.\n");
-        printPotential(stdout, sys->potential);
-    }
-   	initLatticeInfo(sys->lattice);
+   	initPotInfo(&sys->potential);  // 传值问题！！！！！！！！！
+    printPotential(stdout, sys->potential);
+   	initLatticeInfo(&sys->lattice);
     printLattice(stdout, sys->lattice);
-    initSpace(para, sys->lattice, sys->space);
-    initCells(sys->space, sys->potential, sys->cells);
-    initAtoms(sys->cells, sys->atoms);
+    initSpace(para, sys->lattice, &sys->space);
+    initCells(sys->space, sys->potential, &sys->cells);
+    initAtoms(sys->cells, &sys->atoms);
 
     distributeAtoms(sys, para);
 

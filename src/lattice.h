@@ -16,6 +16,6 @@ typedef struct LatticeStr{
 }Lattice;
 
 // 初始化晶格结构体
-void initLatticeInfo(Lattice* lattice);
+void initLatticeInfo(Lattice** lat);
 
 #endif

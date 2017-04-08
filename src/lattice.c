@@ -4,9 +4,10 @@
 #include <string.h>
 
 // 初始化晶格结构体
-void initLatticeInfo(Lattice* lattice){
+void initLatticeInfo(Lattice** lat){
 
-	lattice = (Lattice*)malloc(sizeof(Lattice));
+	*lat = (Lattice*)malloc(sizeof(Lattice));
+	Lattice* lattice = *lat;
 
 	strcpy(lattice->latticeType, "FCC");
 	strcpy(lattice->atomName, "Cu");

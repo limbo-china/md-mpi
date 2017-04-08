@@ -5,9 +5,10 @@
 #include <stdlib.h>
 
 // 初始化细胞链表
-void initCells(struct SpacialStr* space, struct PotentialStr* potential, struct CellStr* cells){
+void initCells(struct SpacialStr* space, struct PotentialStr* potential, struct CellStr** cel){
 
-	cells = (Cell*)malloc(sizeof(Cell));
+	*cel = (Cell*)malloc(sizeof(Cell));
+  Cell* cells = *cel;
 
 	// 保证细胞长度大于等于截断距离
 	for (int i = 0; i < 3; i++)

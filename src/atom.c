@@ -8,9 +8,10 @@
 #include <math.h>
 
 // 初始化原子信息
-void initAtoms(struct CellStr* cells, Atom* atoms){
+void initAtoms(struct CellStr* cells, Atom** ato){
 
-	atoms = (Atom*)malloc(sizeof(Atom));
+	*ato = (Atom*)malloc(sizeof(Atom));
+    Atom* atoms = *ato;
 
    	int maxAtomNum = MAXPERCELL*cells->totalCellNum;
 	
