@@ -3,11 +3,15 @@
 #include "parameter.h"
 #include "cell.h"
 #include "system.h"
+#include "lattice.h"
+#include "energy.h"
 
 #include <stdlib.h>
 #include <math.h>
 
-// 初始化原子信息
+#define KB (8.6173324e-5) //波尔兹曼常数
+
+// 初始化原子信息结构体
 void initAtoms(struct CellStr* cells, Atom** ato){
 
 	*ato = (Atom*)malloc(sizeof(Atom));
@@ -122,4 +126,71 @@ void assignAtom(int id, double3 xyzpos, struct SystemStr* sys, double3 momenta){
         sys->atoms->pos[n][i] = xyzpos[i];
         sys->atoms->momenta[n][i] = momenta[i];
     }
+}
+
+// 初始化体系的温度，即原子的速度
+void initTemperature(struct SystemStr* sys, struct ParameterStr* para){
+
+    // 指定温度
+    double temper = para->initTemper;
+    // 原子质量
+    double atomM = sys->lat->atomM; 
+
+    // 本空间所有原子总动量
+    double3 myMomenta = {0.0,0.0,0.0};
+
+    // 整个体系所有原子总动量
+    double3 globalMomenta = {0.0,0.0,0.0};
+
+    // 给定原子一个随机的速度及动量，并计算本空间的所有原子总动量
+    for (int nCell=0; nCell<sys->cells->myCellNum; nCell++)
+        for (int n=MAXPERCELL*nCell, count=0; count<sys->cells->atomNum[nCell]; count++, n++)
+        {
+            double sigma = sqrt(kB * temper/atomM);
+            uint64_t seed = mkSeed(sys->atoms->id[n], 123);
+            sys->atoms->momenta[n][0] = atomM * sigma * gasdev(&seed);
+            sys->atoms->momenta[n][1] = atomM * sigma * gasdev(&seed);
+            sys->atoms->momenta[n][2] = atomM * sigma * gasdev(&seed);
+
+            myMomenta[0] += sys->atoms->momenta[n][0];
+            myMomenta[1] += sys->atoms->momenta[n][1];
+            myMomenta[2] += sys->atoms->momenta[n][2];
+        }
+
+    // 保证体系的总动量为0，在计算力之前需要调整为0
+
+    // AllReduce, 得到整个体系的总动量
+    MPI_Allreduce(myMomenta, globalMomenta, 3, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+    
+    // 每个原子需要中和的动量值
+    double3 adjustMomenta;
+    for(int i=0; i<3; i++)
+        adjustMomenta[i] = -1 * globalMomenta[i]/sys->atoms->totalNum;
+
+    // 调整各原子动量
+    for (int nCell=0; nCell<sys->cells->myCellNum; nCell++)
+        for (int n=MAXPERCELL*nCell, count=0; count<sys->cells->atomNum[nCell]; count++, n++)
+            for(int i=0 ;i<3 ;i++)
+                sys->atoms->momenta[n][i] += adjustMomenta[i];
+
+    // 调整总动量为0后，需要调整体系的温度为指定温度
+    computeTotalKinetic(sys);
+    // 调整前的系统温度
+    double t = (2*sys->energy->kineticEnergy)/(sys->atoms->totalNum*kB*3); 
+    // 校正因子
+    double factor = sqrt(temper/t);
+
+    // 调整温度,乘以校正因子
+    for (int nCell=0; nCell<sys->cells->myCellNum; nCell++)
+        for (int n=MAXPERCELL*nCell, count=0; count<sys->cells->atomNum[nCell]; count++, n++)
+            for(int i=0 ;i<3 ;i++)
+                sys->atoms->momenta[n][i] *= factor; 
+
+    // 计算调整后的总动能
+    computeTotalKinetic(sys);
+}
+
+// 初始化原子的位移
+void initDisplace(struct SystemStr* sys, struct ParameterStr* para){
+
 }

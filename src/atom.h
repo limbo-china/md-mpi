@@ -36,4 +36,10 @@ void distributeAtoms(struct SystemStr* sys, struct ParameterStr* para);
 // 将指定原子根据其坐标，分配到对应的细胞中
 void assignAtom(int id, double3 xyzpos, struct SystemStr* sys, double3 momenta);
 
+// 初始化体系的温度，即原子的速度
+void initTemperature(struct SystemStr* sys, struct ParameterStr* para);
+
+// 初始化原子的位移
+void initDisplace(struct SystemStr* sys, struct ParameterStr* para);
+
 #endif

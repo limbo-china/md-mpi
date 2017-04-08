@@ -7,7 +7,7 @@
 System* initSystem(Parameter* para){
 
 	System* sys = (System*)malloc(sizeof(System));
-	//sys->energy = NULL;
+	sys->energy = NULL;
 	sys->potential = NULL;
 	sys->lattice = NULL;
     sys->space = NULL;
@@ -15,7 +15,8 @@ System* initSystem(Parameter* para){
     sys->atoms = NULL;
     //sys->atomExchange = NULL;
 
-   	initPotInfo(&sys->potential);  // 传值问题！！！！！！！！！
+    initEnergy(&sys->energy);
+   	initPotInfo(&sys->potential);
     printPotential(stdout, sys->potential);
    	initLatticeInfo(&sys->lattice);
     printLattice(stdout, sys->lattice);
