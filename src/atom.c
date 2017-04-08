@@ -80,14 +80,14 @@ void distributeAtoms(struct SystemStr* sys, struct ParameterStr* para){
                		if (zpos < myMin[2] || zpos >= myMax[2]) continue;
 
                		// 计算原子的id
-               		//int id = ib+n*(iz+zLat*(iy+yLat*(ix)));
+               		int id = ib+n*(iz+zLat*(iy+yLat*(ix)));
 
                		xyzpos[0] = xpos;
                		xyzpos[1] = ypos;
                		xyzpos[2] = zpos;
 
-               		// 将此原子置于对应的细胞中
-               		//assignAtom(id, sys, xyzpos, momenta);
+               		// 将此原子置于对应的细胞中,并初始化动量为0
+               		assignAtom(id, xyzpos, sys, momenta);
             	}
 
    	// 利用mpi的reduce计算所有进程的总原子数量
@@ -96,4 +96,30 @@ void distributeAtoms(struct SystemStr* sys, struct ParameterStr* para){
    	//endTimer(reduce);
 
    	//assert(s->atoms->nGlobal == nb*nx*ny*nz);
+}
+
+// 将指定原子分配到对应的细胞中
+void assignAtom(int id, double3 xyzpos, struct SystemStr* sys, double3 momenta){
+    
+    // 根据原子坐标找到对应的细胞
+    int cell = fineCellByCoord(sys->cells, sys->space, xyzpos);
+
+    // 计算此原子为本空间第几个原子
+    int n = cell*MAXPERCELL;
+    n = n + sys->cells->atomNum[cell];
+   
+    // 若不在通信区域中，本空间总原子数加1
+    if (cell < sys->cells->myCellNum)
+        sys->atoms->myNum++;
+
+    // 当前细胞中的原子数加1
+    sys->cells->atomNum[cell]++;
+
+    sys->atoms->id[n] = id;
+
+    // 对原子的位置坐标、动量赋值
+    for(int i =0; i<3 ;i++){
+        sys->atoms->pos[n][i] = xyzpos[i];
+        sys->atoms->momenta[n][i] = momenta[i];
+    }
 }

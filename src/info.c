@@ -22,7 +22,7 @@ void printPara(FILE* f, Parameter* para){
            "stepTime: %g fs\n"
            "initialTemperature: %g K\n"
            "initialDisplacement: %g Angstroms\n"
-           "----------------\n",
+           "----------------\n\n",
            para->potentialName,
            para->xLat, 
            para->yLat,
@@ -46,10 +46,12 @@ void printPotential(FILE* f, Potential* potential){
     if (! ifZeroRank())
         return;
 
-    fprintf(f, "  Potential type   : %s\n", potential->potentialType);
-    fprintf(f, "  Cutoff           : %g\n", potential->cutoff);
-    fprintf(f, "  Epsilon          : %g\n", potential->epsilon);
-    fprintf(f, "  Sigma            : %g\n", potential->sigma);
+    fprintf(f, "---Potential information:---\n\n", );
+    fprintf(f, "Potential type   : %s\n", potential->potentialType);
+    fprintf(f, "Cutoff           : %g\n", potential->cutoff);
+    fprintf(f, "Epsilon          : %g\n", potential->epsilon);
+    fprintf(f, "Sigma            : %g\n", potential->sigma);
+    fprintf(f, "----------------\n\n", );
 }
 
 // 打印所模拟晶格的相关信息
@@ -58,8 +60,10 @@ void printLattice(FILE* f, Lattice* lattice){
     if (! ifZeroRank())
         return;
 
-    fprintf(f, "  Lattice type   : %s\n", lattice->latticeType);
-    fprintf(f, "  Atom name           : %s\n", lattice->atomName);
-    fprintf(f, "  Atomic mass          : %g\n", lattice->atomM);
-    fprintf(f, "  Lattice Constant            : %g\n", lattice->latticeConst);
+    fprintf(f, "---Lattice information:---\n\n", );
+    fprintf(f, "Lattice type    : %s\n", lattice->latticeType);
+    fprintf(f, "Atom name       : %s\n", lattice->atomName);
+    fprintf(f, "Atomic mass     : %g\n", lattice->atomM);
+    fprintf(f, "Lattice Constant: %g\n", lattice->latticeConst);
+    fprintf(f, "----------------\n\n", );
 }

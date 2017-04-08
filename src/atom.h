@@ -33,4 +33,7 @@ void initAtoms(struct CellStr* cells, Atom** ato);
 // 分配各原子到对应的细胞中
 void distributeAtoms(struct SystemStr* sys, struct ParameterStr* para);
 
+// 将指定原子根据其坐标，分配到对应的细胞中
+void assignAtom(int id, double3 xyzpos, struct SystemStr* sys, double3 momenta);
+
 #endif
