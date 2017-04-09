@@ -24,12 +24,12 @@ typedef struct SystemStr
 
    	Spacial* space;        // 空间分解法所需的必要信息
 
+   	DataComm* datacomm;  // 通信区域，交换原子信息
+
    	Cell* cells;       	// 选取linked-cell数据结构, 存储各cell相关信息数据
 
    	Atom* atoms;          // 存储原子的相关信息数据
-     	
-   	//HaloExchange* atomExchange;  // 通信区域，交换原子信息
-   
+     	 
 } System;
 
 //初始化模拟体系

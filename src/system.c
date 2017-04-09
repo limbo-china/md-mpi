@@ -2,18 +2,13 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 //初始化模拟体系
 System* initSystem(Parameter* para){
 
 	System* sys = (System*)malloc(sizeof(System));
-	sys->energy = NULL;
-	sys->potential = NULL;
-	sys->lattice = NULL;
-    sys->space = NULL;
-    sys->cells = NULL;
-    sys->atoms = NULL;
-    //sys->atomExchange = NULL;
+	memset(sys, 0, sizeof(System));
 
     initEnergy(&sys->energy);
    	initPotInfo(&sys->potential);
@@ -23,6 +18,7 @@ System* initSystem(Parameter* para){
     initSpace(para, sys->lattice, &sys->space);
     initCells(sys->space, sys->potential, &sys->cells);
     initAtoms(sys->cells, &sys->atoms);
+    initComm(&sys->datacomm, sys->space, sys->cells);
 
     distributeAtoms(sys, para);
 
