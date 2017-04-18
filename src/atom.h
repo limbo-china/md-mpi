@@ -42,4 +42,10 @@ void initTemperature(struct SystemStr* sys, struct ParameterStr* para);
 // 初始化原子的位移
 void initDisplace(struct SystemStr* sys, struct ParameterStr* para);
 
+// 调整原子所在细胞，并进行原子数据通信
+void adjustAtoms(struct SystemStr* sys);
+
+// 将cell1中的第N个原子移动到cell2中
+void moveAtom(struct CellStr* cells, Atom* atoms, int n, int cell1, int cell2);
+
 #endif

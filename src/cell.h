@@ -35,4 +35,7 @@ int fineCellByCoord(Cell* cells, struct SpacialStr* space, double3 coord);
 // 根据细胞位置xyz返回细胞序号，即该空间中第几个细胞
 int findCellByXYZ(Cell* cells, int3 xyz);
 
+// 根据细胞序号返回细胞位置xyz,与函数findCellByXYZ互为逆过程
+int3 getXYZByCell(Cell* cells, int num);
+
 #endif

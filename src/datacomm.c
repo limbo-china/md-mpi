@@ -35,7 +35,7 @@ void initComm(DataComm** comm, struct SpacialStr* space, struct CellStr* cells){
     int maxComm = MAX((xyzCellNum[0]+2)*(xyzCellNum[1]+2),
     	MAX((xyzCellNum[1]+2)*(xyzCellNum[2]+2),
     		(xyzCellNum[0]+2)*(xyzCellNum[2]+2)));
-    datacomm->bufSize = 2*maxComm*MAXPERCELL*sizeof(AtomData);
+    datacomm->bufSize = 2*maxComm*MAXPERCELL*sizeof(AtomData); //可改进为每个面需要自己的细胞数量
 
     datacomm->commCellNum[X_NEG] = 2*(xyzCellNum[1]+2)*(xyzCellNum[2]+2);
    	datacomm->commCellNum[X_POS] = 2*(xyzCellNum[1]+2)*(xyzCellNum[2]+2);
@@ -73,4 +73,52 @@ int* findCommCells(struct CellStr* cells, enum Neighbor dimen, int num){
             	commcells[n++] = findCellByXYZ(cells, ix, iy, iz);
    	//assert
    	return commcells;
+}
+
+// 将待发送的原子数据加入缓冲区内,返回加入缓冲区内的数据个数
+int addSendData(struct Systemstr* sys, void* buf, enum Neighbor dimen){
+
+	int num = 0;
+   	AtomData* buffer = (AtomData*) buf; // 可改进为拥有自己的缓冲区
+    
+   	int commCellNum = sys->datacomm->commCellNum[dimen];
+   	int* commCells = sys->datacomm->commCells[dimen];
+   
+   	for (int nCell=0; nCell<commCellNum; nCell++)
+   	{
+      	int cell = commCells[nCell];
+      	for (int n=cell*MAXPERCELL,count=0; count<sys->cells->atomNum[cell]; n++,count++)
+      	{
+      		for(int i=0;i<3;i++){
+      			buffer[num].pos[i] = sys->atoms->pos[n][i];
+      			buffer[num].momenta[i] = sys->atoms->momenta[n][i];
+      		}
+        	buffer[num].id  = sys->atoms->id[n];
+         	num++;
+      	}
+   	}
+   return num;
+}
+
+// 处理已接收的其他进程的原子数据
+void procRecvData(struct Systemstr* sys, void* buf, int size){
+	
+	AtomData* buffer = (AtomData*) buf;
+
+	double3 pos; //原子坐标
+	double3 momenta; //原子动量
+
+	int id;
+	for (int num=0; num<size; num++)
+   	{     	
+      	for(int i=0;i<3;i++)
+      	{
+      		pos[i] = buffer[num].pos[i];
+      		momenta[i] = buffer[num].momenta[i];
+      	}
+      	id = buffer[num].id;
+      	
+      	// 将原子分配至对应的细胞中
+      	assignAtom(id, pos, sys, momenta);
+   	}
 }

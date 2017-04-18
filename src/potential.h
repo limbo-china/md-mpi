@@ -15,7 +15,7 @@ typedef struct PotentialStr{
 
    	double cutoff; //截断距离
 
-	int  (*computeforce)(struct SystemStr* sys); // 计算相互作用力的函数
+	//void  (*computeforce)(struct SystemStr* sys); // 计算相互作用力的函数
    	//可以单独拿出来 void (*print)(FILE* f, Potential* potential); // 打印势函数相关信息的函数
    	//void (*free)(Potential* potential); // 释放结构体空间的函数
    	
@@ -26,5 +26,8 @@ void initPotInfo(Potential** pot);
 
 // 释放结构体空间
 void potentialFree(Potential* potential);
+
+// 根据势函数，求原子间的相互作用力
+void computeForce(struct SystemStr* sys);
 
 #endif

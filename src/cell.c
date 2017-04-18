@@ -35,7 +35,7 @@ void initCells(struct SpacialStr* space, struct PotentialStr* potential, struct 
       	cells->atomNum[i] = 0;
 }
 
-// 根据坐标找到所在的细胞
+// 根据原子坐标找到所在的细胞
 int fineCellByCoord(Cell* cells, Spacial* space, double3 coord){
 
     double* myMin = space->myMin;
@@ -64,7 +64,6 @@ int findCellByXYZ(Cell* cells, int3 xyz){
     int cell;
 
     int myCellNum = cells->myCellNum;
-    int cellLength = cells->cellLength;
     int *xyzCellNum = cells->xyzCellNum;
 
     // Z轴正方向的通信区域细胞
@@ -93,4 +92,73 @@ int findCellByXYZ(Cell* cells, int3 xyz){
         cell = xyz[0] + xyzCellNum[0]*xyz[1] + xyzCellNum[0]*xyzCellNum[1]*xyz[2];
 
     return cell;
+}
+
+// 根据细胞序号返回细胞位置xyz,与函数findCellByXYZ互为逆过程
+int3 getXYZByCell(Cell* cells, int num){
+
+    int3 xyz;
+    int *xyzCellNum = cells->xyzCellNum;
+   
+    if( num < cells->myCellNum)
+    {
+        xyz[0] = num % xyzCellNum[0];
+        num /= xyzCellNum[0];
+        xyz[1] = num % xyzCellNum[1];
+        xyz[2] = num / xyzCellNum[1];
+    }
+    else 
+    {
+        int ink;
+        ink = num - cells->myCellNum;
+        if (ink < 2*xyzCellNum[1]*xyzCellNum[2])
+        {
+            if (ink < xyzCellNum[1]*xyzCellNum[2]) 
+            {
+                xyz[0] = 0;
+            }
+            else 
+            {
+                ink -= xyzCellNum[1]*xyzCellNum[2];
+                xyz[0] = xyzCellNum[0] + 1;
+            }
+            xyz[1] = 1 + ink % xyzCellNum[1];
+            xyz[2] = 1 + ink / xyzCellNum[1];
+        }
+        else if (ink < (2 * xyzCellNum[2] * (xyzCellNum[1] + xyzCellNum[0] + 2))) 
+        {
+            ink -= 2 * xyzCellNum[2] * xyzCellNum[1];
+            if (ink < ((xyzCellNum[0] + 2) *xyzCellNum[2])) 
+            {
+                xyz[1] = 0;
+            }
+            else 
+            {
+                ink -= (xyzCellNum[0] + 2) * xyzCellNum[2];
+                xyz[1] = xyzCellNum[1] + 1;
+            }
+            xyz[0] = ink % (xyzCellNum[0] + 2);
+            xyz[2] = 1 + ink / (xyzCellNum[0] + 2);
+        }
+        else 
+        {
+            ink -= 2 * xyzCellNum[2] * (xyzCellNum[1] + xyzCellNum[0] + 2);
+            if (ink < ((xyzCellNum[0] + 2) * (xyzCellNum[1] + 2))) 
+            {
+                xyz[2] = 0;
+            }
+            else 
+            {
+                ink -= (xyzCellNum[0] + 2) * (xyzCellNum[1] + 2);
+                xyz[2] = xyzCellNum[2] + 1;
+            }
+            xyz[0] = ink % (xyzCellNum[0] + 2);
+            xyz[1] = ink / (xyzCellNum[0] + 2);
+        }
+        xyz[0]--;
+        xyz[1]--;
+        xyz[2]--;
+    }
+
+    return xyz;
 }

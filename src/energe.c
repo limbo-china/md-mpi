@@ -8,7 +8,7 @@ void initEnergy(Energy** ener){
     Energy* energy = *ener;
 
     energy->kineticEnergy = 0.0;
-    energy->potentialEnergy = 0.0;
+    //energy->potentialEnergy = 0.0;
 }
 
 // 计算体系的总动能

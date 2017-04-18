@@ -5,6 +5,7 @@
 
 struct SpacialStr;
 struct CellStr;
+struct Systemstr;
 
 typedef struct DataCommStr{
 
@@ -40,3 +41,9 @@ void initComm(DataComm** comm, struct SpacialStr* space, struct CellStr* cells);
 
 // 找出指定维度上所有通信部分的细胞
 int* findCommCells(struct CellStr* cells, enum Neighbor dimen, int num);
+
+// 将待发送的原子数据加入缓冲区内,返回加入缓冲区内的数据个数
+int addSendData(struct Systemstr* sys, void* buf, enum Neighbor dimen);
+
+// 处理已接收的其他进程的原子数据
+void procRecvData(struct Systemstr* sys, void* buf, int size);
