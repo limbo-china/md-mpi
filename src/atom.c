@@ -6,6 +6,7 @@
 #include "lattice.h"
 #include "energy.h"
 #include "datacomm.h"
+#include "random.h"
 
 #include <stdlib.h>
 #include <math.h>
@@ -233,7 +234,7 @@ void adjustAtoms(struct SystemStr* sys){
         dimen_POSI = 2*dimen + 1;
 
         neighbor_NEGA = sys->datacomm->neighborProc[dimen_NEGA];
-        neighbor_POSI = sys->datacomm->neighborProc[dimen_POSI]
+        neighbor_POSI = sys->datacomm->neighborProc[dimen_POSI];
 
         // 将数据加入发送缓冲区
         int neg_send = addSendData(sys, negSendBuf, dimen_NEGA);
