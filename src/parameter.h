@@ -6,6 +6,8 @@
 
 #define INPUTFILE_PATH "./input/parameter"
 
+#include "mytype.h"
+
 typedef struct ParameterStr{
 
    	char potentialName[128]; // 势函数名
