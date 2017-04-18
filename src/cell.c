@@ -95,7 +95,7 @@ int findCellByXYZ(Cell* cells, int3 xyz){
 }
 
 // 根据细胞序号返回细胞位置xyz,与函数findCellByXYZ互为逆过程
-int3 getXYZByCell(Cell* cells, int num){
+int* getXYZByCell(Cell* cells, int num){
 
     int3 xyz;
     int *xyzCellNum = cells->xyzCellNum;

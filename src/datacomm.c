@@ -1,5 +1,6 @@
 #include "datacomm.h"
 #include "cell.h"
+#include "atom.h"
 
 #include <stdlib.h>
 
@@ -55,9 +56,9 @@ int* findCommCells(struct CellStr* cells, enum Neighbor dimen, int num){
    	int xBegin = -1;
    	int xEnd   = cells->xyzCellNum[0]+1;
    	int yBegin = -1;
-   	int yEnd   = boxes->xyzCellNum[1]+1;
+   	int yEnd   = cells->xyzCellNum[1]+1;
    	int zBegin = -1;
-   	int zEnd   = boxes->xyzCellNum[2]+1;
+   	int zEnd   = cells->xyzCellNum[2]+1;
 
    	if (dimen == X_NEG) xEnd = xBegin+2;
    	if (dimen == X_POS) xBegin = xEnd-2;

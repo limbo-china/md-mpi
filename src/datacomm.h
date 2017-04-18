@@ -5,7 +5,7 @@
 
 struct SpacialStr;
 struct CellStr;
-struct Systemstr;
+struct SystemStr;
 
 typedef struct DataCommStr{
 
@@ -43,7 +43,7 @@ void initComm(DataComm** comm, struct SpacialStr* space, struct CellStr* cells);
 int* findCommCells(struct CellStr* cells, enum Neighbor dimen, int num);
 
 // 将待发送的原子数据加入缓冲区内,返回加入缓冲区内的数据个数
-int addSendData(struct Systemstr* sys, void* buf, enum Neighbor dimen);
+int addSendData(struct SystemStr* sys, void* buf, enum Neighbor dimen);
 
 // 处理已接收的其他进程的原子数据
-void procRecvData(struct Systemstr* sys, void* buf, int size);
+void procRecvData(struct SystemStr* sys, void* buf, int size);
