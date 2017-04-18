@@ -10,7 +10,7 @@
 enum TimerPtr{
 	total,
 	loop,
-	computeForce,
+	force,
 	atomExchange,
 	reduce,
 	timerNums
