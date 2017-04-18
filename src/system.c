@@ -18,9 +18,17 @@ System* initSystem(Parameter* para){
     initSpace(para, sys->lattice, &sys->space);
     initCells(sys->space, sys->potential, &sys->cells);
     initAtoms(sys->cells, &sys->atoms);
-    initComm(&sys->datacomm, sys->space, sys->cells);
 
     distributeAtoms(sys, para);
+    initTemperature(sys, para);
+    initDisplace(sys, para);
+
+    initComm(&sys->datacomm, sys->space, sys->cells);
+
+    adjustAtoms(sys);
+
+    computeForce(sys);
+
 
     return sys;
 }
