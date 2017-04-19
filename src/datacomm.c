@@ -68,10 +68,11 @@ int* findCommCells(struct CellStr* cells, enum Neighbor dimen, int num){
    	if (dimen == Z_POS) zBegin = zEnd-2;
 
    	int n = 0;
-   	for (int ix=xBegin; ix<xEnd; ix++)
-      	for (int iy=yBegin; iy<yEnd; iy++)
-         	for (int iz=zBegin; iz<zEnd; iz++)
-            	commcells[n++] = findCellByXYZ(cells, ix, iy, iz);
+   	int3 xyz;
+   	for (xyz[0]=xBegin; xyz[0]<xEnd; xyz[0]++)
+      	for (xyz[1]=yBegin; xyz[1]<yEnd; xyz[1]++)
+         	for (xyz[2]=zBegin; xyz[2]<zEnd; xyz[2]++)
+            	commcells[n++] = findCellByXYZ(cells, xyz);
    	//assert
    	return commcells;
 }
@@ -102,7 +103,7 @@ int addSendData(struct SystemStr* sys, void* buf, enum Neighbor dimen){
 }
 
 // 处理已接收的其他进程的原子数据
-void procRecvData(struct SystemS tr* sys, void* buf, int size){
+void procRecvData(struct SystemStr* sys, void* buf, int size){
 	
 	AtomData* buffer = (AtomData*) buf;
 

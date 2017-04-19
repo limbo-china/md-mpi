@@ -137,8 +137,8 @@ void initTemperature(struct SystemStr* sys, struct ParameterStr* para){
     // 指定温度
     double temper = para->initTemper;
     // 原子质量
-    double atomM = sys->lat->atomM; 
-
+    double atomM = sys->lattice->atomM; 
+ 
     // 本空间所有原子总动量
     double3 myMomenta = {0.0,0.0,0.0};
 
@@ -209,7 +209,7 @@ void adjustAtoms(struct SystemStr* sys){
     for (int nCell=0; nCell<sys->cells->myCellNum; nCell++)
         for (int n = nCell*MAXPERCELL,count=0; count< sys->cells->atomNum[nCell];)
         {
-            int nCell2 = fineCellByCoord(sys->cells, sys->space,sys->atoms->pos[n+count]);
+            int nCell2 = findCellByCoord(sys->cells, sys->space,sys->atoms->pos[n+count]);
             if (nCell2 == nCell){
                 count++;
                 continue;

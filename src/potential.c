@@ -57,11 +57,12 @@ void computeForce(struct SystemStr* sys){
       	if ( atomnum1 == 0 ) 
       		continue;
 
-      	int3 cell1xyz = getXYZByCell(cells,cell1);
-   		int3 cell2xyz;
-   		for(int cell2xyz[0]=cell1xyz[0]-1;cell2xyz[0]<=cell1xyz[0]+1;cell2xyz[0]++)
-   			for(int cell2xyz[1]=cell1xyz[1]-1;cell2xyz[1]<=cell1xyz[1]+1;cell2xyz[1]++)
-   				for(int cell2xyz[2]=cell1xyz[2]-1;cell2xyz[2]<=cell1xyz[2]+1;cell2xyz[2]++)
+      	int3 cell1xyz,cell2xyz;
+      	getXYZByCell(cells,cell1xyz,cell1);
+
+   		for(cell2xyz[0]=cell1xyz[0]-1;cell2xyz[0]<=cell1xyz[0]+1;cell2xyz[0]++)
+   			for(cell2xyz[1]=cell1xyz[1]-1;cell2xyz[1]<=cell1xyz[1]+1;cell2xyz[1]++)
+   				for(cell2xyz[2]=cell1xyz[2]-1;cell2xyz[2]<=cell1xyz[2]+1;cell2xyz[2]++)
    				{
    					int cell2 = findCellByXYZ(cells,cell2xyz);
    					int atomnum2 = cells->atomNum[cell2];

@@ -2,6 +2,7 @@
 #include "system.h"
 
 #include <mpi.h>
+#include <stdlib.h>
 
 // 初始化结构体
 void initEnergy(Energy** ener){
