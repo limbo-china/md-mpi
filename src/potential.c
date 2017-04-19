@@ -15,9 +15,10 @@ void initPotInfo(Potential** pot){
 	Potential* potential= *pot;
 	
 	strcpy(potential->potentialType,"Lennard-Jones");
-	potential->sigma = 2.315;	                  
-   	potential->epsilon = 0.167;
-   	potential->cutoff = 2.5*potential->sigma;
+	potential->De = 2.315;	                  
+   	potential->re = 0.167;
+   	potential->Beta = 0.167;
+   	potential->cutoff = 2.5*potential->De;
 
    	//potential->computeforce = computeForce;
    	//potential->free = potentialFree;
