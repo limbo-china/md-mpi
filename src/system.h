@@ -12,6 +12,7 @@
 #include "atom.h"
 #include "info.h"
 #include "energy.h"
+#include "datacomm.h"
 
 // 所模拟的分子体系对于的结构体
 typedef struct SystemStr
