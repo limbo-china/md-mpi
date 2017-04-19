@@ -1,5 +1,7 @@
 // datacomm.h
 // 原子的位置、动量等数据通信
+#ifndef DATACOMM_H_
+#define DATACOMM_H_
 
 #include "mytype.h"
 
@@ -47,3 +49,5 @@ int addSendData(struct SystemStr* sys, void* buf, enum Neighbor dimen);
 
 // 处理已接收的其他进程的原子数据
 void procRecvData(struct SystemStr* sys, void* buf, int size);
+
+#endif
