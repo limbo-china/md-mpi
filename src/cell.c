@@ -2,6 +2,8 @@
 
 #include "space.h"
 #include "potential.h"
+
+#include <math.h>
 #include <stdlib.h>
 
 // 初始化细胞链表

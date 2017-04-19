@@ -1,6 +1,8 @@
 #include "energy.h"
 #include "system.h"
 
+#include <mpi.h>
+
 // 初始化结构体
 void initEnergy(Energy** ener){
 

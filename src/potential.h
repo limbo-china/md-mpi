@@ -10,8 +10,9 @@ typedef struct PotentialStr{
 	
 	char potentialType[30]; //势函数类型
 	
-	double sigma;
-   	double epsilon;
+	double De;
+   	double re;
+   	double Beta;
 
    	double cutoff; //截断距离
 

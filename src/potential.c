@@ -34,7 +34,7 @@ void computeForce(struct SystemStr* sys){
 
 	Potential* potential = sys->potential;
    	double De = potential->De;
-   	double Beta = potential->epsilon;
+   	double Beta = potential->Beta;
    	double re = potential->re;
    	double cutoff = potential->cutoff;
 
