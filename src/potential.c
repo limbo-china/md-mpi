@@ -1,6 +1,7 @@
 #include "potential.h"
 #include "cell.h"
 #include "atom.h"
+#include "system.h"
 
 #include <stdlib.h>
 #include <string.h>

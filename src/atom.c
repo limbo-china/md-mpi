@@ -109,7 +109,7 @@ void distributeAtoms(struct SystemStr* sys, struct ParameterStr* para){
 void assignAtom(int id, double3 xyzpos, struct SystemStr* sys, double3 momenta){
     
     // 根据原子坐标找到对应的细胞
-    int cell = fineCellByCoord(sys->cells, sys->space, xyzpos);
+    int cell = findCellByCoord(sys->cells, sys->space, xyzpos);
 
     // 计算此原子为本空间第几个原子
     int n = cell*MAXPERCELL;

@@ -1,6 +1,7 @@
 #include "datacomm.h"
 #include "cell.h"
 #include "atom.h"
+#include "system.h"
 
 #include <stdlib.h>
 
