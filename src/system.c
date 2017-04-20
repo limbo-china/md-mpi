@@ -26,6 +26,7 @@ System* initSystem(Parameter* para){
     initComm(&sys->datacomm, sys->space, sys->cells);
 
     adjustAtoms(sys);
+    printf("adjust\n");
 
     computeForce(sys);
 

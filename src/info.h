@@ -7,6 +7,7 @@
 #include "parameter.h"
 #include "potential.h"
 #include "lattice.h"
+#include "atom.h"
 
 #include <stdio.h>
 
@@ -19,4 +20,6 @@ void printPotential(FILE* f, Potential* potential);
 // 打印所模拟晶格的相关信息
 void printLattice(FILE* f, Lattice* lattice);
 
+// 跟踪模拟体系的总原子数
+void printTotalAtom(FILE* f, Atom* atoms);
 #endif

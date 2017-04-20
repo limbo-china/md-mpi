@@ -68,3 +68,11 @@ void printLattice(FILE* f, Lattice* lattice){
     fprintf(f, "Lattice Constant: %g\n", lattice->latticeConst);
     fprintf(f, "----------------\n\n");
 }
+
+// 跟踪模拟体系的总原子数
+void printTotalAtom(FILE* f, Atom* atoms){
+    if (! ifZeroRank())
+        return;
+
+    fprintf(f, "Total Atom    : %d\n", atoms->totalNum);
+}

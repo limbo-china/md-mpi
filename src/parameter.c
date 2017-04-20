@@ -14,9 +14,9 @@ Parameter* readParameter(){
 	para->xLat = 10;
 	para->yLat = 10;
 	para->zLat = 10;
-	para->xProc = 1;
-	para->yProc = 1;
-	para->zProc = 1;
+	para->xProc = 2;
+	para->yProc = 2;
+	para->zProc = 2;
 	para->stepNums = 100;
 	para->printNums = 10;
 	para->stepTime = 1.0;
