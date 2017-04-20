@@ -243,7 +243,11 @@ void adjustAtoms(struct SystemStr* sys){
         // 将数据加入发送缓冲区
         int neg_send = addSendData(sys, negSendBuf, dimen_NEGA);
         int pos_send = addSendData(sys, posSendBuf, dimen_POSI);
-        printf("addsend\n");
+        //printf("addsend\n");
+        if (ifZeroRank())
+        {
+            printf("%d %d %d %d\n",neg_send,pos_send,sizeof(AtomData),bufsize );
+        }
 
         // 调用mpi_sendrecv函数，与邻居进程发送与接收原子数据
         int neg_recv,pos_recv;
