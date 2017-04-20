@@ -8,6 +8,7 @@
 #include "datacomm.h"
 #include "random.h"
 #include "info.h"
+#include "mympi.h"
 
 #include <stdlib.h>
 #include <math.h>
