@@ -241,6 +241,7 @@ void adjustAtoms(struct SystemStr* sys){
         // 将数据加入发送缓冲区
         int neg_send = addSendData(sys, negSendBuf, dimen_NEGA);
         int pos_send = addSendData(sys, posSendBuf, dimen_POSI);
+        printf("addsend\n");
 
         // 调用mpi_sendrecv函数，与邻居进程发送与接收原子数据
         int neg_recv,pos_recv;
@@ -254,6 +255,7 @@ void adjustAtoms(struct SystemStr* sys){
                 negRecvBuf, bufsize, MPI_BYTE, neighbor_NEGA, 0,
                 MPI_COMM_WORLD, &status2);
         MPI_Get_count(&status2, MPI_BYTE, &neg_recv);
+        printf("sendrecv\n");
 
         // 处理接收到的原子数据，将原子分配至细胞中
         procRecvData(sys, posRecvBuf, pos_recv/sizeof(AtomData));
