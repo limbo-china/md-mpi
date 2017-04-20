@@ -2,6 +2,7 @@
 #include "cell.h"
 #include "atom.h"
 #include "system.h"
+#include "mympi.h"
 
 #include <stdlib.h>
 
@@ -32,6 +33,10 @@ void initComm(DataComm** comm, struct SpacialStr* space, struct CellStr* cells){
     	( myPos[1] + globalProcNum[1]*((myPos[2] -1 + globalProcNum[2]) % globalProcNum[2]));
     datacomm->neighborProc[Z_POS] = myPos[0] + globalProcNum[0] *
     	( myPos[1] + globalProcNum[1]*((myPos[2] +1 + globalProcNum[2]) % globalProcNum[2]));
+
+    if (ifZeroRank())
+    	for(int i=0;i<6;i++)
+    		printf("%d ",neighborProc[i]);
 
     // 各方向需要通信的细胞数的最大值
     int maxComm = MAX((xyzCellNum[0]+2)*(xyzCellNum[1]+2),
