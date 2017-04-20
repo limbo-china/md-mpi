@@ -36,7 +36,7 @@ void initComm(DataComm** comm, struct SpacialStr* space, struct CellStr* cells){
 
     if (ifZeroRank())
     	for(int i=0;i<6;i++)
-    		printf("%d ",neighborProc[i]);
+    		printf("%d ",datacomm->neighborProc[i]);
 
     // 各方向需要通信的细胞数的最大值
     int maxComm = MAX((xyzCellNum[0]+2)*(xyzCellNum[1]+2),
