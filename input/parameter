@@ -1,7 +1,7 @@
 #input file. give neccessary parameters.
 
 potentialName=default
-xLatticeNum=15
+xLatticeNum=10
 yLatticeNum=10
 zLatticeNum=default
 xProcessNum=2
