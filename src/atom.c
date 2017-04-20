@@ -14,8 +14,6 @@
 #include <stdio.h>
 #include <mpi.h>
 
-#define kB (8.6173324e-5) //波尔兹曼常数
-
 // 初始化原子信息结构体
 void initAtoms(struct CellStr* cells, Atom** ato){
 

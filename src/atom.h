@@ -6,6 +6,7 @@
 
 // 每个细胞中的原子数最大值
 #define MAXPERCELL 64
+#define kB (8.6173324e-5) //波尔兹曼常数
 
 #include "mytype.h"
 
