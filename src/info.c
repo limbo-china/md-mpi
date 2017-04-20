@@ -76,3 +76,13 @@ void printTotalAtom(FILE* f, Atom* atoms){
 
     fprintf(f, "Total Atom    : %d\n", atoms->totalNum);
 }
+
+// 输出体系的温度
+void printTemper(FILE*f, Energy* ener, int totalAtom){
+    if (! ifZeroRank())
+        return;
+
+    double temper = (2*ener->kineticEnergy)/(totalAtom*kB*3);
+
+    fprintf(f, "Temperature    : %g\n", temper);
+}

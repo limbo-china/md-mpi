@@ -194,6 +194,7 @@ void initTemperature(struct SystemStr* sys, struct ParameterStr* para){
 
     // 计算调整后的总动能
     computeTotalKinetic(sys);
+    printTemper(stdout, sys->energy, sys->atoms->totalNum);
 }
 
 // 初始化原子的位移

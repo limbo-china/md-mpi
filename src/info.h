@@ -8,6 +8,7 @@
 #include "potential.h"
 #include "lattice.h"
 #include "atom.h"
+#include "energy.h"
 
 #include <stdio.h>
 
@@ -22,4 +23,7 @@ void printLattice(FILE* f, Lattice* lattice);
 
 // 跟踪模拟体系的总原子数
 void printTotalAtom(FILE* f, Atom* atoms);
+
+// 输出体系的温度
+void printTemper(FILE*f, Energy* ener, int totalAtom);
 #endif
