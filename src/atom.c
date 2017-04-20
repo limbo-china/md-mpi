@@ -250,7 +250,7 @@ void adjustAtoms(struct SystemStr* sys){
         MPI_Sendrecv(negSendBuf, neg_send*sizeof(AtomData), MPI_BYTE, neighbor_NEGA, 0,
                 posRecvBuf, bufsize, MPI_BYTE, neighbor_POSI, 0,
                 MPI_COMM_WORLD, &status1);
-        MPI_Get_count(&status1, MPI_BYTE, &pos_recv);
+        MPI_Get_coun t(&status1, MPI_BYTE, &pos_recv);
         MPI_Sendrecv(posSendBuf, pos_send*sizeof(AtomData), MPI_BYTE, neighbor_POSI, 0,
                 negRecvBuf, bufsize, MPI_BYTE, neighbor_NEGA, 0,
                 MPI_COMM_WORLD, &status2);
