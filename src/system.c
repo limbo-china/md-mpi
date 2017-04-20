@@ -27,7 +27,7 @@ System* initSystem(Parameter* para){
 
     adjustAtoms(sys);
 
-    computeForce(sys);
+    //computeForce(sys);
 
 
     return sys;
