@@ -90,7 +90,16 @@ int addSendData(struct SystemStr* sys, void* buf, enum Neighbor dimen){
    	AtomData* buffer = (AtomData*) buf; // 可改进为拥有自己的缓冲区
     
    	int commCellNum = sys->datacomm->commCellNum[dimen];
+   	
    	int* commCells = sys->datacomm->commCells[dimen];
+   	if (ifZeroRank())
+    {
+    	printf ("commCellNum:%d\n",commCellNum);
+    	printf("commcell:\n");
+    	for(int i=0;i<commCellNum;i++){
+    		printf("%d ",commCells[i]);
+    	}
+    }
    
    	for (int nCell=0; nCell<commCellNum; nCell++)
    	{
