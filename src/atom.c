@@ -217,8 +217,10 @@ void adjustAtoms(struct SystemStr* sys){
                 continue;
             }   
             moveAtom(sys->cells, sys->atoms, count, nCell, nCell2);           
-        } 
-    printf("adjust\n");
+        }
+    MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+    printTotalAtom(stdout,sys->atoms);
+    //printf("adjust\n");
 
     // 与各邻居进程进行通信
     enum Neighbor dimen_POSI, dimen_NEGA;
