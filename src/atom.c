@@ -247,7 +247,7 @@ void adjustAtoms(struct SystemStr* sys){
         //printf("addsend\n");
         if (ifZeroRank())
         {
-            printf("%d %d %d %d\n",neg_send,pos_send,sizeof(AtomData),bufsize );
+            printf("%d %d %d %d\n",neg_send,pos_send,sizeof(AtomData),bufsize);
         }
 
         // 调用mpi_sendrecv函数，与邻居进程发送与接收原子数据
@@ -265,8 +265,8 @@ void adjustAtoms(struct SystemStr* sys){
         printf("sendrecv\n");
 
         // 处理接收到的原子数据，将原子分配至细胞中
-        //procRecvData(sys, posRecvBuf, pos_recv/sizeof(AtomData));
-        //procRecvData(sys, negRecvBuf, neg_recv/sizeof(AtomData));
+        procRecvData(sys, posRecvBuf, pos_recv/sizeof(AtomData));
+        procRecvData(sys, negRecvBuf, neg_recv/sizeof(AtomData));
     }
 
     // 通信结束，释放缓冲区
