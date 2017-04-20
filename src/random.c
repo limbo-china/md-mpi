@@ -2,7 +2,7 @@
 
 #include <math.h>
 
-double gas(uint64_t* seed)
+double gasdev(uint64_t* seed)
 {
    double rsq,v1,v2;
    do 
