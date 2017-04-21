@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <mpi.h>
 
 //初始化模拟体系
 System* initSystem(Parameter* para){
@@ -26,7 +27,7 @@ System* initSystem(Parameter* para){
     initComm(&sys->datacomm, sys->space, sys->cells);
 
     adjustAtoms(sys);
-    
+
     MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
     printTotalAtom(stdout,sys->atoms);
 
