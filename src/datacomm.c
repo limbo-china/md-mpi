@@ -89,9 +89,15 @@ int addSendData(struct SystemStr* sys, void* buf, enum Neighbor dimen){
 	int num = 0;
    	AtomData* buffer = (AtomData*) buf; // 可改进为拥有自己的缓冲区
     
-   	int commCellNum = sys->datacomm->commCellNum[dimen];
-   	
+   	int commCellNum = sys->datacomm->commCellNum[dimen]; 	
    	int* commCells = sys->datacomm->commCells[dimen];
+   	int* spacePos = sys->space->position;
+   	int* spaceNum = sys->space->globalProcNum;
+
+   	double3 boundaryAdjust;
+   	for(int i=0;i<3;i++)
+   		boundaryAdjust[i]= 0.0;
+
    	if (ifZeroRank())
     {
     	printf ("commCellNum:%d\n",commCellNum);
@@ -100,6 +106,18 @@ int addSendData(struct SystemStr* sys, void* buf, enum Neighbor dimen){
     		printf("%d ",commCells[i]);
     	}
     }
+   	if(spacePos[0] == 0 && dimen == X_NEG)
+   		boundaryAdjust[0] = sys->space->globalLength[0];
+   	if(spacePos[0] == spaceNum[0]-1 && dimen == X_POS)
+   		boundaryAdjust[0] = -1.0*sys->space->globalLength[0];
+   	if(spacePos[1] == 0 && dimen == Y_NEG)
+   		boundaryAdjust[1] = sys->space->globalLength[1];
+   	if(spacePos[1] == spaceNum[1]-1 && dimen == Y_POS)
+   		boundaryAdjust[1] = -1.0*sys->space->globalLength[1];
+   	if(spacePos[2] == 0 && dimen == Z_NEG)
+   		boundaryAdjust[2] = sys->space->globalLength[2];
+   	if(spacePos[2] == spaceNum[2]-1 && dimen == Z_POS)
+   		boundaryAdjust[2] = -1.0*sys->space->globalLength[2];
    
    	for (int nCell=0; nCell<commCellNum; nCell++)
    	{
@@ -107,7 +125,7 @@ int addSendData(struct SystemStr* sys, void* buf, enum Neighbor dimen){
       	for (int n=cell*MAXPERCELL,count=0; count<sys->cells->atomNum[cell]; n++,count++)
       	{
       		for(int i=0;i<3;i++){
-      			buffer[num].pos[i] = sys->atoms->pos[n][i];
+      			buffer[num].pos[i] = sys->atoms->pos[n][i]+boundaryAdjust[i];
       			buffer[num].momenta[i] = sys->atoms->momenta[n][i];
       		}
         	buffer[num].id  = sys->atoms->id[n];
