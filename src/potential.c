@@ -15,11 +15,11 @@ void initPotInfo(Potential** pot){
 	*pot = (Potential*)malloc(sizeof(Potential));
 	Potential* potential= *pot;
 	
-	strcpy(potential->potentialType,"Lennard-Jones");
-	potential->De = 2.315;	                  
-   	potential->re = 0.167;
-   	potential->Beta = 0.167;
-   	potential->cutoff = 2.5*potential->De;
+	strcpy(potential->potentialType,"Morse");
+	potential->De = 0.3429;	                  
+   	potential->re = 2.866;
+   	potential->Beta = 1.3588;
+   	potential->cutoff = 6.0;
 
    	//potential->computeforce = computeForce;
    	//potential->free = potentialFree;

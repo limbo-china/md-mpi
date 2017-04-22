@@ -10,7 +10,7 @@ Parameter* readParameter(){
 
 	// 初始化参数结构体（默认值）
 	memset(para->potentialName, 0, 128);
-	strcpy(para->potentialName, "Lennard-Jones");
+	strcpy(para->potentialName, "Morse");
 	para->xLat = 10;
 	para->yLat = 10;
 	para->zLat = 10;
