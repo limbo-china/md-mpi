@@ -10,8 +10,8 @@
 #include <unistd.h>
 #include <mpi.h>
 
-void updateMomenta(sys, para); 
-void updatePosition(sys, para);
+void updateMomenta(System* sys, Parameter* para); 
+void updatePosition(System* sys, Parameter* para);
 
 int main(int argc, char** argv){
 	
@@ -60,7 +60,7 @@ int main(int argc, char** argv){
 	return 0;
 }
 
-void updateMomenta(sys, para){
+void updateMomenta(System* sys, Parameter* para){
 
 	double t = 0.5*para->stepTime;
 
@@ -69,7 +69,7 @@ void updateMomenta(sys, para){
       		for(int i=0;i<3;i++)
          		sys->atoms->momenta[n][i] += t*sys->atoms->force[n][i];
 }
-void updatePosition(sys, para){
+void updatePosition(System* sys, Parameter* para){
 
 	double t = para->stepTime;
 	double m = sys->lattice->atomM;
