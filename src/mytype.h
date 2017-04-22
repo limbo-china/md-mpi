@@ -7,4 +7,4 @@
 typedef double double3[3]; // 坐标类型
 typedef int int3[3]; 
 
-#endif 
+#endif  

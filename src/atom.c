@@ -245,10 +245,10 @@ void adjustAtoms(struct SystemStr* sys){
         int neg_send = addSendData(sys, negSendBuf, dimen_NEGA);
         int pos_send = addSendData(sys, posSendBuf, dimen_POSI);
         //printf("addsend\n");
-        if (ifZeroRank())
-        {
-            printf("%d %d %d %d\n",neg_send,pos_send,sizeof(AtomData),bufsize);
-        }
+        // if (ifZeroRank())
+        // {
+        //     printf("%d %d %d %d\n",neg_send,pos_send,sizeof(AtomData),bufsize);
+        // }
 
         // 调用mpi_sendrecv函数，与邻居进程发送与接收原子数据
         int neg_recv,pos_recv;
@@ -262,7 +262,7 @@ void adjustAtoms(struct SystemStr* sys){
                 negRecvBuf, bufsize, MPI_BYTE, neighbor_NEGA, 0,
                 MPI_COMM_WORLD, &status2);
         MPI_Get_count(&status2, MPI_BYTE, &neg_recv);
-        printf("sendrecv\n");
+        //printf("sendrecv\n");
 
         if (ifZeroRank())
         {
