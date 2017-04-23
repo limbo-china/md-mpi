@@ -1,11 +1,11 @@
 #input file. give neccessary parameters.
 
 potentialName=default
-xLatticeNum=10
-yLatticeNum=10
-zLatticeNum=default
-xProcessNum=2
-yProcessNum=2
+xLatticeNum=20
+yLatticeNum=20
+zLatticeNum=20
+xProcessNum=4
+yProcessNum=4
 zProcessNum=default
 stepNums=200
 printNums=5
