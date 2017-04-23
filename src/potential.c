@@ -51,7 +51,8 @@ void  computeForce(struct SystemStr* sys){
    //real_t s6 = sigma*sigma*sigma*sigma*sigma*sigma;
    // real_t rCut6 = s6 / (rCut2*rCut2*rCut2);
    // real_t eShift = POT_SHIFT * rCut6 * (rCut6 - 1.0);
-
+      	printf("myatomnum: %d\n",sys->atoms->myNum);
+      	beginTimer(force);
    	for (int cell1 = 0; cell1<cells->myCellNum; cell1++)
    	{
       	int atomnum1 = cells->atomNum[cell1];
@@ -108,4 +109,5 @@ void  computeForce(struct SystemStr* sys){
             		}
          		}
     }
+    endTimer(force);
 }
