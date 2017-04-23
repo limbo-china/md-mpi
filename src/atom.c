@@ -253,6 +253,7 @@ void adjustAtoms(struct SystemStr* sys){
         // 调用mpi_sendrecv函数，与邻居进程发送与接收原子数据
         int neg_recv,pos_recv;
 
+        beginTimer(communication);
         MPI_Status status1,status2;
         MPI_Sendrecv(negSendBuf, neg_send*sizeof(AtomData), MPI_BYTE, neighbor_NEGA, 0,
                 posRecvBuf, bufsize, MPI_BYTE, neighbor_POSI, 0,
@@ -262,6 +263,7 @@ void adjustAtoms(struct SystemStr* sys){
                 negRecvBuf, bufsize, MPI_BYTE, neighbor_NEGA, 0,
                 MPI_COMM_WORLD, &status2);
         MPI_Get_count(&status2, MPI_BYTE, &neg_recv);
+        endTimer(communication);
         //printf("sendrecv\n");
 
         // if (ifZeroRank())

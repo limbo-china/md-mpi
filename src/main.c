@@ -59,7 +59,9 @@ int main(int argc, char** argv){
 	endTimer(total);
 
 	//fprintf(stdout, "total time: %g\n",getGlobalTime(total));
-	//fprintf(stdout, "loop time: %g\n",getGlobalTime(loop));
+	fprintf(stdout, "loop time: %g\n",getGlobalTime(loop));
+	fprintf(stdout, "comm time: %g\n",getGlobalTime(communication));
+
 
 	MPI_Finalize();
 	return 0;

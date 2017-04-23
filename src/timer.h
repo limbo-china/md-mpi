@@ -11,7 +11,7 @@ enum TimerPtr{
 	total,
 	loop,
 	force,
-	atomExchange,
+	communication,
 	reduce,
 	timerNums
 };
