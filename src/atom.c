@@ -264,10 +264,10 @@ void adjustAtoms(struct SystemStr* sys){
         MPI_Get_count(&status2, MPI_BYTE, &neg_recv);
         //printf("sendrecv\n");
 
-        if (ifZeroRank())
-        {
-            printf("pos_recv:%d neg_recv:%d\n",pos_recv,neg_recv);
-        }
+        // if (ifZeroRank())
+        // {
+        //     printf("pos_recv:%d neg_recv:%d\n",pos_recv,neg_recv);
+        // }
 
         // 处理接收到的原子数据，将原子分配至细胞中
         procRecvData(sys, posRecvBuf, pos_recv/sizeof(AtomData));

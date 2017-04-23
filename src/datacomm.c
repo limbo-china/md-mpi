@@ -98,14 +98,14 @@ int addSendData(struct SystemStr* sys, void* buf, enum Neighbor dimen){
    	for(int i=0;i<3;i++)
    		boundaryAdjust[i]= 0.0;
 
-   	if (ifZeroRank())
-    {
-    	printf ("commCellNum:%d\n",commCellNum);
-    	printf("commcell:\n");
-    	for(int i=0;i<commCellNum;i++){
-    		printf("%d ",commCells[i]);
-    	}
-    }
+   	// if (ifZeroRank())
+    // {
+    // 	printf ("commCellNum:%d\n",commCellNum);
+    // 	printf("commcell:\n");
+    // 	for(int i=0;i<commCellNum;i++){
+    // 		printf("%d ",commCells[i]);
+    // 	}
+    // }
    	if(spacePos[0] == 0 && dimen == X_NEG)
    		boundaryAdjust[0] = sys->space->globalLength[0];
    	if(spacePos[0] == spaceNum[0]-1 && dimen == X_POS)
