@@ -22,7 +22,6 @@ System* initSystem(Parameter* para){
 
     distributeAtoms(sys, para);
     initTemperature(sys, para);
-    initDisplace(sys, para);
 
     initComm(&sys->datacomm, sys->space, sys->cells);
 

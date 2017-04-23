@@ -22,7 +22,6 @@ void printPara(FILE* f, Parameter* para){
            "printNums: %d\n"
            "stepTime: %g fs\n"
            "initialTemperature: %g K\n"
-           "initialDisplacement: %g Angstroms\n"
            "----------------\n\n",
            para->potentialName,
            para->xLat, 
@@ -34,8 +33,7 @@ void printPara(FILE* f, Parameter* para){
            para->stepNums,
            para->printNums,
            para->stepTime,
-           para->initTemper,
-            para->initDisplace
+           para->initTemper
     );
     fflush(f);
 
