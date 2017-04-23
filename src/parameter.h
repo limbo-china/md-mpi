@@ -21,7 +21,6 @@ typedef struct ParameterStr{
    	int printNums;      // 每多少步打印一次信息
    	double stepTime;          // 步长（飞秒）
    	double initTemper; // 初始温度
-   	double initDisplace; // 原子初始位移
 
 }Parameter;
 

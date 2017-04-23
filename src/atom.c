@@ -196,11 +196,6 @@ void initTemperature(struct SystemStr* sys, struct ParameterStr* para){
     printTemper(stdout, sys->energy, sys->atoms->totalNum);
 }
 
-// 初始化原子的位移
-void initDisplace(struct SystemStr* sys, struct ParameterStr* para){
-
-}
-
 // 调整原子所在细胞，并进行原子数据通信(去掉了序号排序)
 void adjustAtoms(struct SystemStr* sys){
 

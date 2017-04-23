@@ -21,7 +21,6 @@ Parameter* readParameter(){
 	para->printNums = 10;
 	para->stepTime = 1.0;
 	para->initTemper = 600.0;
-	para->initDisplace = 0.0;
 
 	//可改进：参数值的格式检查-----------------
 
@@ -59,9 +58,6 @@ Parameter* readParameter(){
 
 	if(getInputValue(INPUTFILE_PATH, "initialTemperature", value_buff) == 1)
 		para->initTemper = strtod(value_buff, NULL);
-
-	if(getInputValue(INPUTFILE_PATH, "initialDisplacement", value_buff) == 1)
-		para->initDisplace = strtod(value_buff, NULL);
 
 	return para;
 }

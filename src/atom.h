@@ -40,9 +40,6 @@ void assignAtom(int id, double3 xyzpos, struct SystemStr* sys, double3 momenta);
 // 初始化体系的温度，即原子的速度
 void initTemperature(struct SystemStr* sys, struct ParameterStr* para);
 
-// 初始化原子的位移
-void initDisplace(struct SystemStr* sys, struct ParameterStr* para);
-
 // 调整原子所在细胞，并进行原子数据通信
 void adjustAtoms(struct SystemStr* sys);
 
