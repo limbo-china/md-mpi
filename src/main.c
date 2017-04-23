@@ -33,7 +33,7 @@ int main(int argc, char** argv){
 	//sleep(5);
 	System* sys = initSystem(para);
 
-	for(int i=0;i<2000;i++){
+	for(int i=0;i<para->stepNums;i++){
 
     	updateMomenta(sys, para); 
 
@@ -44,7 +44,7 @@ int main(int argc, char** argv){
     	computeForce(sys);
 
     	updateMomenta(sys, para); 
-    	if(i%100 == 0){
+    	if(i%para->printNums == 0){
 
     	MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
     	printTotalAtom(stdout,sys->atoms);
