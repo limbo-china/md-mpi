@@ -12,6 +12,7 @@ enum TimerPtr{
 	loop,
 	force,
 	communication,
+	adjustatom,
 	reduce,
 	timerNums
 };

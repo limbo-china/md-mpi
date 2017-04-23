@@ -39,15 +39,19 @@ int main(int argc, char** argv){
 
     	updatePosition(sys, para);
 
+    	beginTimer(adjustatom);
     	adjustAtoms(sys);
+    	endTimer(adjustatom);
 
+    	beginTimer(force);
     	computeForce(sys);
+		endTimer(force);
 
     	updateMomenta(sys, para); 
     	if(i%para->printNums == 0){
 
-    	MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
-    	printTotalAtom(stdout,sys->atoms);
+    	//MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+    	//printTotalAtom(stdout,sys->atoms);
 
     	computeTotalKinetic(sys);
     	printTemper(stdout,sys->energy,sys->atoms->totalNum);
@@ -60,7 +64,10 @@ int main(int argc, char** argv){
 
 	//fprintf(stdout, "total time: %g\n",getGlobalTime(total));
 	fprintf(stdout, "loop time: %g\n",getGlobalTime(loop));
+	fprintf(stdout, "adjust time: %g\n",getGlobalTime(adjustatom));
 	fprintf(stdout, "comm time: %g\n",getGlobalTime(communication));
+	fprintf(stdout, "force time: %g\n",getGlobalTime(force));
+
 
 
 	MPI_Finalize();

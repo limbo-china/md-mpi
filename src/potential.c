@@ -32,7 +32,7 @@ void potentialFree(Potential* potential){
 }
 
 // 根据势函数，求原子间的相互作用力, 选取morse势函数
-void computeForce(struct SystemStr* sys){
+void  computeForce(struct SystemStr* sys){
 
 	Potential* potential = sys->potential;
    	double De = potential->De;
