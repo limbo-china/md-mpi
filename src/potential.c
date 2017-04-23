@@ -2,6 +2,7 @@
 #include "cell.h"
 #include "atom.h"
 #include "system.h"
+#include "timer.h"
 
 #include <stdlib.h>
 #include <string.h>
