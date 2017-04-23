@@ -84,7 +84,7 @@ void  computeForce(struct SystemStr* sys){
 								if (cell2 < cells->myCellNum && id2 <= id1 ) // <=  or < ???
 										continue; // 防止重复计算
 
-								calls++;	
+								//calls++;	
 									for (int i=0; i<3; i++)
 									{
 										r_vector[i] = atoms->pos[n1][i]-atoms->pos[n2][i];
@@ -94,6 +94,7 @@ void  computeForce(struct SystemStr* sys){
 									if ( r_scalar > cutoff*cutoff) 
 										continue;
 
+									calls++;
 									r_scalar = sqrt(r_scalar);
 
 									double force_scalar = 0.0;
