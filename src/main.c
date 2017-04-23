@@ -47,6 +47,9 @@ int main(int argc, char** argv){
 
     	MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
     	printTotalAtom(stdout,sys->atoms);
+
+    	computeTotalKinetic(sys);
+    	printTemper(stdout,sys->energy,sys->atoms->totalNum);
     }
 	endTimer(loop);
 	
