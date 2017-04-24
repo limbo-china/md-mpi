@@ -87,6 +87,7 @@ void  computeForce(struct SystemStr* sys){
          				int id1 = atoms->id[n1];
          				for (int n2=cell2*MAXPERCELL,count2=0; count2<atomnum2; count2++,n2++)
             			{
+            				beginTimer(force);
             				int id2 = atoms->id[n2];
 
            					double3 r_vector;
@@ -103,7 +104,7 @@ void  computeForce(struct SystemStr* sys){
 
                				if ( r_scalar > rCut2/*cutoff*cutoff*/) 
                					continue;
-               					beginTimer(force);
+               					
                				r_scalar = 1.0/r_scalar;
                				double r6 = s6 * (r_scalar*r_scalar*r_scalar);
 
