@@ -77,7 +77,7 @@ void  computeForce(struct SystemStr* sys){
    			for(cell2xyz[1]=cell1xyz[1]-1;cell2xyz[1]<=cell1xyz[1]+1;cell2xyz[1]++)
    				for(cell2xyz[2]=cell1xyz[2]-1;cell2xyz[2]<=cell1xyz[2]+1;cell2xyz[2]++)
    				{
-   					beginTimer(test);
+   					//beginTimer(test);
    					int cell2 = findCellByXYZ(cells,cell2xyz);
    					int atomnum2 = cells->atomNum[cell2];
    					if ( atomnum2 == 0 ) 
@@ -88,7 +88,7 @@ void  computeForce(struct SystemStr* sys){
          				int id1 = atoms->id[n1];
          				for (int n2=cell2*MAXPERCELL,count2=0; count2<atomnum2; count2++,n2++)
             			{
-            				beginTimer(force);
+            				//beginTimer(force);
             				int id2 = atoms->id[n2];
 
            					double3 r_vector;
@@ -128,11 +128,11 @@ void  computeForce(struct SystemStr* sys){
                   	// 			atoms->force[n1][i] -= (r_vector[i]/r_scalar)*force_scalar;
                   	// 			atoms->force[n2][i] += (r_vector[i]/r_scalar)*force_scalar;
                				// }
-               				endTimer(force);
+               				//endTimer(force);
    						}        
             		}
             		
-            		endTimer(test);
+            		//endTimer(test);
          		}
     }
     //endTimer(force);
