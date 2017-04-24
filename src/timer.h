@@ -14,6 +14,7 @@ enum TimerPtr{
 	communication,
 	adjustatom,
 	reduce,
+	test,
 	timerNums
 };
 
