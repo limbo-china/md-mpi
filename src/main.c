@@ -38,9 +38,9 @@ int main(int argc, char** argv){
 
     	updatePosition(sys, para);
 
-    	beginTimer(adjustatom);
+    	//beginTimer(adjustatom);
     	adjustAtoms(sys);
-    	endTimer(adjustatom);
+    	//endTimer(adjustatom);
 
     	//beginTimer(force);
     	computeForce(sys);
