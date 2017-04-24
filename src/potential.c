@@ -73,14 +73,15 @@ void  computeForce(struct SystemStr* sys){
       	int3 cell1xyz,cell2xyz;
       	getXYZByCell(cells,cell1xyz,cell1);
 
-      	int calls=0;
+      	//int calls=0;
    		for(cell2xyz[0]=cell1xyz[0]-1;cell2xyz[0]<=cell1xyz[0]+1;cell2xyz[0]++)
    			for(cell2xyz[1]=cell1xyz[1]-1;cell2xyz[1]<=cell1xyz[1]+1;cell2xyz[1]++)
    				for(cell2xyz[2]=cell1xyz[2]-1;cell2xyz[2]<=cell1xyz[2]+1;cell2xyz[2]++)
    				{
-   					calls++;
-   					beginTimer(test);
+   					//calls++;
+   					
    					int cell2 = findCellByXYZ(cells,cell2xyz);
+   					beginTimer(test);
    					int atomnum2 = cells->atomNum[cell2];
    					if ( atomnum2 == 0 ) 
       					continue;
@@ -136,7 +137,7 @@ void  computeForce(struct SystemStr* sys){
             		
             		endTimer(test);
          		}
-         		printf("calls:%d\n",calls );
+         		//printf("calls:%d\n",calls );
     }
     //endTimer(force);
 	 //printf("calls: %d\n",calls );
