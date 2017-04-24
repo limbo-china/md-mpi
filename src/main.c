@@ -44,11 +44,11 @@ int main(int argc, char** argv){
 
     	do{
     		beginTimer(force);
-    	}while(0)
+    	}while(0);
     	computeForce(sys);
 		do{
     		endTimer(force);
-    	}while(0)
+    	}while(0);
 
     	updateMomenta(sys, para); 
     	if(i%para->printNums == 0){
