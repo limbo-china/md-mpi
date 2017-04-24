@@ -42,9 +42,13 @@ int main(int argc, char** argv){
     	adjustAtoms(sys);
     	endTimer(adjustatom);
 
-    	//beginTimer(force);
+    	do{
+    		beginTimer(force);
+    	}while(0)
     	computeForce(sys);
-		//endTimer(force);
+		do{
+    		endTimer(force);
+    	}while(0)
 
     	updateMomenta(sys, para); 
     	if(i%para->printNums == 0){
