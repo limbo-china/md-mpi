@@ -77,12 +77,12 @@ void  computeForce(struct SystemStr* sys){
    			for(cell2xyz[1]=cell1xyz[1]-1;cell2xyz[1]<=cell1xyz[1]+1;cell2xyz[1]++)
    				for(cell2xyz[2]=cell1xyz[2]-1;cell2xyz[2]<=cell1xyz[2]+1;cell2xyz[2]++)
    				{
-   					beginTimer(force);
+   					
    					int cell2 = findCellByXYZ(cells,cell2xyz);
    					int atomnum2 = cells->atomNum[cell2];
    					if ( atomnum2 == 0 ) 
       					continue;
-
+				beginTimer(force);
       				for (int n1=cell1*MAXPERCELL,count1=0; count1<atomnum1; count1++,n1++)
          			{
          				int id1 = atoms->id[n1];
