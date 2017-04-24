@@ -49,7 +49,7 @@ void  computeForce(struct SystemStr* sys){
 
     double s6 = sigma*sigma*sigma*sigma*sigma*sigma;
 
-   double rCut6 = s6 / (rCut2*rCut2*rCut2);
+   //double rCut6 = s6 / (rCut2*rCut2*rCut2);
 
 		Cell* cells = sys->cells;
 	Atom* atoms = sys->atoms;
@@ -106,7 +106,7 @@ void  computeForce(struct SystemStr* sys){
                				r_scalar = 1.0/r_scalar;
                				double r6 = s6 * (r_scalar*r_scalar*r_scalar);
 
-               				double fr = - 4.0*epsilon*r6*r2*(12.0*r6 - 6.0);
+               				double fr = - 4.0*epsilon*r6*r_scalar*(12.0*r6 - 6.0);
               				 for (int m=0; m<3; m++)
                				{
                   				atoms->force[n1][m] -= r_vector[m]*fr;
