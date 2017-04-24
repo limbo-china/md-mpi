@@ -115,7 +115,7 @@ void  computeForce(struct SystemStr* sys){
                   				atoms->force[n1][m] -= r_vector[m]*fr;
                   				atoms->force[n2][m] += r_vector[m]*fr;
                				}
-               				endTimer(force);
+               				
                				// r_scalar = sqrt(r_scalar);
 
                				// double force_scalar = 0.0;
@@ -130,6 +130,7 @@ void  computeForce(struct SystemStr* sys){
                				// }
    						}        
             		}
+            		endTimer(force);
          		}
     }
     //endTimer(force);
