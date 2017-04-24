@@ -229,6 +229,7 @@ void adjustAtoms(struct SystemStr* sys){
     char* negRecvBuf = malloc(bufsize);
     char* posRecvBuf = malloc(bufsize);
 
+    beginTimer(communication);
     for(int dimen = 0;dimen<3;dimen++){
         dimen_NEGA = 2*dimen;
         dimen_POSI = 2*dimen + 1;
@@ -248,7 +249,7 @@ void adjustAtoms(struct SystemStr* sys){
         // 调用mpi_sendrecv函数，与邻居进程发送与接收原子数据
         int neg_recv,pos_recv;
 
-        beginTimer(communication);
+        
         MPI_Status status1,status2;
         MPI_Sendrecv(negSendBuf, neg_send*sizeof(AtomData), MPI_BYTE, neighbor_NEGA, 0,
                 posRecvBuf, bufsize, MPI_BYTE, neighbor_POSI, 0,
@@ -258,7 +259,7 @@ void adjustAtoms(struct SystemStr* sys){
                 negRecvBuf, bufsize, MPI_BYTE, neighbor_NEGA, 0,
                 MPI_COMM_WORLD, &status2);
         MPI_Get_count(&status2, MPI_BYTE, &neg_recv);
-        endTimer(communication);
+       
         //printf("sendrecv\n");
 
         // if (ifZeroRank())
@@ -270,6 +271,7 @@ void adjustAtoms(struct SystemStr* sys){
         procRecvData(sys, posRecvBuf, pos_recv/sizeof(AtomData));
         procRecvData(sys, negRecvBuf, neg_recv/sizeof(AtomData));
     }
+     endTimer(communication);
 
     // 通信结束，释放缓冲区
     free(negSendBuf);free(posSendBuf);free(negRecvBuf);free(posRecvBuf);

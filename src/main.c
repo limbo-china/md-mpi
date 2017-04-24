@@ -33,9 +33,7 @@ int main(int argc, char** argv){
 	//sleep(5);
 	System* sys = initSystem(para);
 
-	int calls=0;
 	for(int i=0;i<para->stepNums;i++){
-		calls++;
     	updateMomenta(sys, para); 
 
     	updatePosition(sys, para);
@@ -44,9 +42,9 @@ int main(int argc, char** argv){
     	adjustAtoms(sys);
     	endTimer(adjustatom);
 
-    	beginTimer(force);
+    	//beginTimer(force);
     	computeForce(sys);
-		endTimer(force);
+		//endTimer(force);
 
     	updateMomenta(sys, para); 
     	if(i%para->printNums == 0){
@@ -58,7 +56,6 @@ int main(int argc, char** argv){
     	printTemper(stdout,sys->energy,sys->atoms->totalNum);
     	}
     }
-    printf("calls:%d",calls);
 	endTimer(loop);
 	
 
