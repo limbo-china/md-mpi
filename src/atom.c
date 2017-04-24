@@ -214,6 +214,11 @@ void adjustAtoms(struct SystemStr* sys){
             }   
             moveAtom(sys->cells, sys->atoms, count, nCell, nCell2);           
         }
+
+    int haloatoms=0;
+    for (int i=sys->cells->myCellNum; i<sys->cells->totalCellNum; i++)
+        haloatoms+=sys->cells->atomNum[i];
+    printf("haloatoms:%d\n",haloatoms);
     //MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
     //printTotalAtom(stdout,sys->atoms);
     //printf("adjust\n");
