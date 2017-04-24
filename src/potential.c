@@ -63,7 +63,7 @@ void  computeForce(struct SystemStr* sys){
    // real_t rCut6 = s6 / (rCut2*rCut2*rCut2);
    // real_t eShift = POT_SHIFT * rCut6 * (rCut6 - 1.0);
       	//printf("myatomnum: %d\n",sys->atoms->myNum);
-    beginTimer(force);
+    //beginTimer(force);
    	for (int cell1 = 0; cell1<cells->myCellNum; cell1++)
    	{
       	int atomnum1 = cells->atomNum[cell1];
@@ -103,6 +103,7 @@ void  computeForce(struct SystemStr* sys){
 
                				if ( r_scalar > rCut2/*cutoff*cutoff*/) 
                					continue;
+               					beginTimer(force);
                				r_scalar = 1.0/r_scalar;
                				double r6 = s6 * (r_scalar*r_scalar*r_scalar);
 
@@ -112,6 +113,7 @@ void  computeForce(struct SystemStr* sys){
                   				atoms->force[n1][m] -= r_vector[m]*fr;
                   				atoms->force[n2][m] += r_vector[m]*fr;
                				}
+               				endTimer(force);
                				// r_scalar = sqrt(r_scalar);
 
                				// double force_scalar = 0.0;
@@ -128,6 +130,6 @@ void  computeForce(struct SystemStr* sys){
             		}
          		}
     }
-    endTimer(force);
+    //endTimer(force);
 	 //printf("calls: %d\n",calls );
 }
