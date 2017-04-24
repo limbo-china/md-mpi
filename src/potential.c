@@ -52,8 +52,8 @@ void  computeForce(struct SystemStr* sys){
    //real_t s6 = sigma*sigma*sigma*sigma*sigma*sigma;
    // real_t rCut6 = s6 / (rCut2*rCut2*rCut2);
    // real_t eShift = POT_SHIFT * rCut6 * (rCut6 - 1.0);
-      	printf("myatomnum: %d\n",sys->atoms->myNum);
-      	beginTimer(force);
+      	//printf("myatomnum: %d\n",sys->atoms->myNum);
+    beginTimer(force);
    	for (int cell1 = 0; cell1<cells->myCellNum; cell1++)
    	{
       	int atomnum1 = cells->atomNum[cell1];
@@ -100,7 +100,7 @@ void  computeForce(struct SystemStr* sys){
 
                				double t = 1.0/(exp(Beta*(r_scalar-re)));
                				force_scalar = 2*Beta*De*(t-t*t);
-
+ 
                				for (int i=0; i<3; i++)
                				{
                   				atoms->force[n1][i] -= (r_vector[i]/r_scalar)*force_scalar;
