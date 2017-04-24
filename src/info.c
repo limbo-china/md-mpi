@@ -48,8 +48,8 @@ void printPotential(FILE* f, Potential* potential){
     fprintf(f, "---Potential information:---\n\n");
     fprintf(f, "Potential type   : %s\n", potential->potentialType);
     fprintf(f, "Cutoff           : %g\n", potential->cutoff);
-    fprintf(f, "sigma          : %g\n", potential->sigma);
-    fprintf(f, "epsilon            : %g\n", potential->epsilon);
+    //fprintf(f, "sigma          : %g\n", potential->sigma);
+    //fprintf(f, "epsilon            : %g\n", potential->epsilon);
     //fprintf(f, "Beta            : %g\n", potential->Beta);
     fprintf(f, "----------------\n\n");
 }
