@@ -215,10 +215,10 @@ void adjustAtoms(struct SystemStr* sys){
             moveAtom(sys->cells, sys->atoms, count, nCell, nCell2);           
         }
 
-    int haloatoms=0;
-    for (int i=sys->cells->myCellNum; i<sys->cells->totalCellNum; i++)
-        haloatoms+=sys->cells->atomNum[i];
-    printf("haloatoms:%d\n",haloatoms);
+    //int haloatoms=0;
+    //for (int i=sys->cells->myCellNum; i<sys->cells->totalCellNum; i++)
+    //    haloatoms+=sys->cells->atomNum[i];
+    //printf("haloatoms:%d\n",haloatoms);
     //MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
     //printTotalAtom(stdout,sys->atoms);
     //printf("adjust\n");
@@ -234,7 +234,7 @@ void adjustAtoms(struct SystemStr* sys){
     char* negRecvBuf = malloc(bufsize);
     char* posRecvBuf = malloc(bufsize);
 
-   // beginTimer(communication);
+    beginTimer(communication);
     for(int dimen = 0;dimen<3;dimen++){
         dimen_NEGA = 2*dimen;
         dimen_POSI = 2*dimen + 1;
@@ -276,7 +276,7 @@ void adjustAtoms(struct SystemStr* sys){
         procRecvData(sys, posRecvBuf, pos_recv/sizeof(AtomData));
         procRecvData(sys, negRecvBuf, neg_recv/sizeof(AtomData));
     }
-    // endTimer(communication);
+     endTimer(communication);
 
     // 通信结束，释放缓冲区
     free(negSendBuf);free(posSendBuf);free(negRecvBuf);free(posRecvBuf);

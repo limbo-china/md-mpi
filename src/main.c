@@ -38,9 +38,9 @@ int main(int argc, char** argv){
 
     	updatePosition(sys, para);
 
-    	//beginTimer(adjustatom);
+    	beginTimer(adjustatom);
     	adjustAtoms(sys);
-    	//endTimer(adjustatom);
+    	endTimer(adjustatom);
 
     	//beginTimer(force);
     	computeForce(sys);
@@ -66,7 +66,7 @@ int main(int argc, char** argv){
 	fprintf(stdout, "adjust time: %g\n",getGlobalTime(adjustatom));
 	fprintf(stdout, "comm time: %g\n",getGlobalTime(communication));
 	fprintf(stdout, "force time: %g\n",getGlobalTime(force));
-	fprintf(stdout, "test time: %g\n",getGlobalTime(test));
+	//fprintf(stdout, "test time: %g\n",getGlobalTime(test));
 
 
 
