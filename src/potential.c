@@ -81,11 +81,11 @@ void  computeForce(struct SystemStr* sys){
    					//calls++;
    					
    					int cell2 = findCellByXYZ(cells,cell2xyz);
-   					
+
    					int atomnum2 = cells->atomNum[cell2];
    					if ( atomnum2 == 0 ) 
       					continue;
-					beginTimer(test);
+					//beginTimer(test);
       				for (int n1=cell1*MAXPERCELL,count1=0; count1<atomnum1; count1++,n1++)
          			{
          				int id1 = atoms->id[n1];
@@ -135,7 +135,7 @@ void  computeForce(struct SystemStr* sys){
    						}        
             		}
             		
-            		endTimer(test);
+            		//endTimer(test);
          		}
          		//printf("calls:%d\n",calls );
     }
