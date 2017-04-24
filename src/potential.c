@@ -18,12 +18,12 @@ void initPotInfo(Potential** pot){
 	
 	strcpy(potential->potentialType,"Morse");
 	potential->De = 0.3429;	                  
-   	potential->re = 2.866;
-   	potential->Beta = 1.3588;
-   	potential->cutoff = 6.0;
+		potential->re = 2.866;
+		potential->Beta = 1.3588;
+		potential->cutoff = 6.0;
 
-   	//potential->computeforce = computeForce;
-   	//potential->free = potentialFree;
+		//potential->computeforce = computeForce;
+		//potential->free = potentialFree;
 }
 
 // 释放结构体空间
@@ -36,12 +36,12 @@ void potentialFree(Potential* potential){
 void  computeForce(struct SystemStr* sys){
 
 	Potential* potential = sys->potential;
-   	double De = potential->De;
-   	double Beta = potential->Beta;
-   	double re = potential->re;
-   	double cutoff = potential->cutoff;
+		double De = potential->De;
+		double Beta = potential->Beta;
+		double re = potential->re;
+		double cutoff = potential->cutoff;
 
-   	Cell* cells = sys->cells;
+		Cell* cells = sys->cells;
 	Atom* atoms = sys->atoms;
 
    	// 力置0
@@ -111,4 +111,5 @@ void  computeForce(struct SystemStr* sys){
          		}
     }
     endTimer(force);
+	 //printf("calls: %d\n",calls );
 }
