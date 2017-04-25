@@ -33,7 +33,7 @@ int main(int argc, char** argv){
 	//sleep(5);
 	System* sys = initSystem(para);
 
-	for(int i=0;i<para->stepNums;i++){
+	for(int i=1;i<=para->stepNums;i++){
     	updateMomenta(sys, para); 
 
     	updatePosition(sys, para);
@@ -59,7 +59,7 @@ int main(int argc, char** argv){
 			{
 				printf("当前步数: %d 		",i);
 			}		
-    		computeTotalKinetic(sys);
+    		computeTotalKinetic(sys);	
     		printTemper(stdout,sys->energy,sys->atoms->totalNum);
     	}
     }

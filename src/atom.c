@@ -193,7 +193,7 @@ void initTemperature(struct SystemStr* sys, struct ParameterStr* para){
 
     // 计算调整后的总动能
     computeTotalKinetic(sys);
-    printTemper(stdout, sys->energy, sys->atoms->totalNum);
+    //printTemper(stdout, sys->energy, sys->atoms->totalNum);
 }
 
 // 调整原子所在细胞，并进行原子数据通信(去掉了序号排序)
