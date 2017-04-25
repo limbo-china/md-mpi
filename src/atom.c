@@ -100,7 +100,7 @@ void distributeAtoms(struct SystemStr* sys, struct ParameterStr* para){
 
    	// 利用mpi的reduce计算所有进程的总原子数量
    	//beginTimer(reduce);
-   	//MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+   	MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
    	//endTimer(reduce);
     //printTotalAtom(stdout,sys->atoms);
 
@@ -220,7 +220,7 @@ void adjustAtoms(struct SystemStr* sys){
     //    haloatoms+=sys->cells->atomNum[i];
     //printf("haloatoms:%d\n",haloatoms);
     MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
-    printTotalAtom(stdout,sys->atoms);
+    //printTotalAtom(stdout,sys->atoms);
     //printf("adjust\n");
 
     // 与各邻居进程进行通信

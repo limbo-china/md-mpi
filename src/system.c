@@ -15,7 +15,7 @@ System* initSystem(Parameter* para){
    	initPotInfo(&sys->potential);
     printPotential(stdout, sys->potential);
    	initLatticeInfo(&sys->lattice);
-    printLattice(stdout, sys->lattice);
+    //printLattice(stdout, sys->lattice);
     initSpace(para, sys->lattice, &sys->space);
     initCells(sys->space, sys->potential, &sys->cells);
     initAtoms(sys->cells, &sys->atoms);
