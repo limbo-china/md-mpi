@@ -19,7 +19,7 @@ void printPara(FILE* f, Parameter* para){
            "yProcessNum: %d\n"
            "zProcessNum: %d\n"
            "stepNums: %d\n"
-           "printNums: %d\n"
+           //"printNums: %d\n"
            "stepTime: %g fs\n"
            "initialTemperature: %g K\n"
            "----------------\n\n",
@@ -31,7 +31,7 @@ void printPara(FILE* f, Parameter* para){
            para->yProc,
            para->zProc,
            para->stepNums,
-           para->printNums,
+           //para->printNums,
            para->stepTime,
            para->initTemper
     );
@@ -83,5 +83,5 @@ void printTemper(FILE*f, Energy* ener, int totalAtom){
 
     double temper = (2*ener->kineticEnergy)/(totalAtom*kB*3);
 
-    fprintf(f, "Temperature    : %g\n", temper);
+    fprintf(f, "Temperature    : %g\n--------\n", temper);
 }

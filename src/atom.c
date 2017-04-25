@@ -100,9 +100,9 @@ void distributeAtoms(struct SystemStr* sys, struct ParameterStr* para){
 
    	// 利用mpi的reduce计算所有进程的总原子数量
    	//beginTimer(reduce);
-   	MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+   	//MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
    	//endTimer(reduce);
-    printTotalAtom(stdout,sys->atoms);
+    //printTotalAtom(stdout,sys->atoms);
 
    	//assert(s->atoms->nGlobal == nb*nx*ny*nz);
 }

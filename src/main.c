@@ -55,9 +55,12 @@ int main(int argc, char** argv){
 
     	//MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
     	//printTotalAtom(stdout,sys->atoms);
-
-    	computeTotalKinetic(sys);
-    	printTemper(stdout,sys->energy,sys->atoms->totalNum);
+    		if(ifZeroRank())
+			{
+				printf("Steps: %d\n",i);
+			}		
+    		computeTotalKinetic(sys);
+    		printTemper(stdout,sys->energy,sys->atoms->totalNum);
     	}
     }
 	endTimer(loop);
@@ -65,14 +68,15 @@ int main(int argc, char** argv){
 
 	endTimer(total);
 
-	//fprintf(stdout, "total time: %g\n",getGlobalTime(total));
-	fprintf(stdout, "loop time: %g\n",getGlobalTime(loop));
-	fprintf(stdout, "adjust time: %g\n",getGlobalTime(adjustatom));
-	fprintf(stdout, "comm time: %g\n",getGlobalTime(communication));
-	fprintf(stdout, "force time: %g\n",getGlobalTime(force));
-	//fprintf(stdout, "test time: %g\n",getGlobalTime(test));
-
-
+	if(ifZeroRank())
+	{
+		//fprintf(stdout, "total time: %g\n",getGlobalTime(total));
+		fprintf(stdout, "loop time: %g\n",getGlobalTime(loop));
+		fprintf(stdout, "adjust time: %g\n",getGlobalTime(adjustatom));
+		fprintf(stdout, "comm time: %g\n",getGlobalTime(communication));
+		fprintf(stdout, "force time: %g\n",getGlobalTime(force));
+		//fprintf(stdout, "test time: %g\n",getGlobalTime(test));
+	}
 
 	MPI_Finalize();
 	return 0;

@@ -27,8 +27,8 @@ System* initSystem(Parameter* para){
 
     adjustAtoms(sys);
 
-    MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
-    printTotalAtom(stdout,sys->atoms);
+    //MPI_Allreduce(&sys->atoms->myNum, &sys->atoms->totalNum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+    //printTotalAtom(stdout,sys->atoms);
 
     computeForce(sys);
 
