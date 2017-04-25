@@ -83,5 +83,5 @@ void printTemper(FILE*f, Energy* ener, int totalAtom){
 
     double temper = (2*ener->kineticEnergy)/(totalAtom*kB*3);
 
-    fprintf(f, "Temperature    : %g\n--------\n", temper);
+    fprintf(f, "Temperature    : %g\n", temper);
 }
