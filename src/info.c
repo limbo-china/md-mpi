@@ -12,11 +12,11 @@ void printPara(FILE* f, Parameter* para){
    	fprintf(f,
            "---输入参数:---\n\n"
            "势函数: %s\n"
-           "X方向晶格数: %d\n"
-           "Y方向晶格数: %d\n"
+           "X方向晶格数: %d "
+           "Y方向晶格数: %d "
            "Z方向晶格数: %d\n"
-           "X方向进程数: %d\n"
-           "Y方向进程数: %d\n"
+           "X方向进程数: %d "
+           "Y方向进程数: %d "
            "Z方向进程数: %d\n"
            "迭代步数: %d\n"
            //"printNums: %d\n"
@@ -83,5 +83,5 @@ void printTemper(FILE*f, Energy* ener, int totalAtom){
 
     double temper = (2*ener->kineticEnergy)/(totalAtom*kB*3);
 
-    fprintf(f, "当前温度    : %g\n", temper);
+    fprintf(f, "当前温度    : %g K\n", temper);
 }
