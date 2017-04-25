@@ -10,18 +10,18 @@ void printPara(FILE* f, Parameter* para){
       	return;
 
    	fprintf(f,
-           "---Parameters information:---\n\n"
-           "potentialName: %s\n"
-           "xLatticeNum: %d\n"
-           "yLatticeNum: %d\n"
-           "zLatticeNum: %d\n"
-           "xProcessNum: %d\n"
-           "yProcessNum: %d\n"
-           "zProcessNum: %d\n"
-           "stepNums: %d\n"
+           "---输入参数:---\n\n"
+           "势函数: %s\n"
+           "X方向晶格数: %d\n"
+           "Y方向晶格数: %d\n"
+           "Z方向晶格数: %d\n"
+           "X方向进程数: %d\n"
+           "Y方向进程数: %d\n"
+           "Z方向进程数: %d\n"
+           "迭代步数: %d\n"
            //"printNums: %d\n"
-           "stepTime: %g fs\n"
-           "initialTemperature: %g K\n"
+           "步长: %g fs\n"
+           "初始温度: %g K\n"
            "----------------\n\n",
            para->potentialName,
            para->xLat, 
@@ -45,9 +45,9 @@ void printPotential(FILE* f, Potential* potential){
     if (! ifZeroRank())
         return;
 
-    fprintf(f, "---Potential information:---\n\n");
-    fprintf(f, "Potential type   : %s\n", potential->potentialType);
-    fprintf(f, "Cutoff           : %g\n", potential->cutoff);
+    fprintf(f, "---势函数信息:---\n\n");
+    fprintf(f, "势函数   : %s\n", potential->potentialType);
+    fprintf(f, "截断半径           : %g\n", potential->cutoff);
     //fprintf(f, "sigma          : %g\n", potential->sigma);
     //fprintf(f, "epsilon            : %g\n", potential->epsilon);
     //fprintf(f, "Beta            : %g\n", potential->Beta);
@@ -73,7 +73,7 @@ void printTotalAtom(FILE* f, Atom* atoms){
     if (! ifZeroRank())
         return;
 
-    fprintf(f, "Total Atom    : %d\n", atoms->totalNum);
+    fprintf(f, "总原子数    : %d\n", atoms->totalNum);
 }
 
 // 输出体系的温度
@@ -83,5 +83,5 @@ void printTemper(FILE*f, Energy* ener, int totalAtom){
 
     double temper = (2*ener->kineticEnergy)/(totalAtom*kB*3);
 
-    fprintf(f, "Temperature    : %g\n", temper);
+    fprintf(f, "当前温度    : %g\n", temper);
 }

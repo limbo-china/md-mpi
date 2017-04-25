@@ -71,10 +71,10 @@ int main(int argc, char** argv){
 	if(ifZeroRank())
 	{
 		//fprintf(stdout, "total time: %g\n",getGlobalTime(total));
-		fprintf(stdout, "\n------\nloop time: %g\n",getGlobalTime(loop));
+		fprintf(stdout, "\n------\n循环时间: %g\n",getGlobalTime(loop));
 		//fprintf(stdout, "adjust time: %g\n",getGlobalTime(adjustatom));
-		fprintf(stdout, "comm time: %g\n",getGlobalTime(communication));
-		fprintf(stdout, "force time: %g\n------\n",getGlobalTime(force));
+		fprintf(stdout, "通信时间: %g\n",getGlobalTime(communication));
+		fprintf(stdout, "计算力时间: %g\n------\n",getGlobalTime(force));
 		//fprintf(stdout, "test time: %g\n",getGlobalTime(test));
 	}
 
