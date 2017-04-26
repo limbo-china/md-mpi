@@ -89,10 +89,11 @@ void  computeForce(struct SystemStr* sys){
       					continue;
 
       				//calls4++;
-					beginTimer(test);
+					//beginTimer(test);
       				for (int n1=cell1*MAXPERCELL,count1=0; count1<atomnum1; count1++,n1++)
          			{
          				int id1 = atoms->id[n1];
+         				beginTimer(test);
          				for (int n2=cell2*MAXPERCELL,count2=0; count2<atomnum2; count2++,n2++)
             			{
             				
@@ -138,10 +139,11 @@ void  computeForce(struct SystemStr* sys){
                   	 			atoms->force[n2][i] += (r_vector[i]/r_scalar)*force_scalar;
                				 } 
                				//endTimer(force);
-   						}        
+   						}  
+   						endTimer(test);      
             		}
             		
-            		endTimer(test);
+            		//endTimer(test);
          		}
          		//printf("calls:%d\n",calls );
     }
