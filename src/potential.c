@@ -64,15 +64,15 @@ void  computeForce(struct SystemStr* sys){
    // real_t eShift = POT_SHIFT * rCut6 * (rCut6 - 1.0);
       	//printf("myatomnum: %d\n",sys->atoms->myNum);
       	//beginTimer(force);
-      	int calls1=0,calls2=0,calls3=0,calls4=0,calls5=0,calls6=0,calls7=0;
+      	//int calls1=0,calls2=0,calls3=0,calls4=0,calls5=0,calls6=0,calls7=0;
    	for (int cell1 = 0; cell1<cells->myCellNum; cell1++)
    	{
-   		calls1++;
+   		//calls1++;
       	int atomnum1 = cells->atomNum[cell1];
       	if ( atomnum1 == 0 ) 
       		continue;
 
-      	calls2++;
+      	//calls2++;
       	int3 cell1xyz,cell2xyz;
       	getXYZByCell(cells,cell1xyz,cell1);
 
@@ -80,7 +80,7 @@ void  computeForce(struct SystemStr* sys){
    			for(cell2xyz[1]=cell1xyz[1]-1;cell2xyz[1]<=cell1xyz[1]+1;cell2xyz[1]++)
    				for(cell2xyz[2]=cell1xyz[2]-1;cell2xyz[2]<=cell1xyz[2]+1;cell2xyz[2]++)
    				{
-   					calls3++;
+   					//calls3++;
    					
    					int cell2 = findCellByXYZ(cells,cell2xyz);
 
@@ -88,15 +88,15 @@ void  computeForce(struct SystemStr* sys){
    					if ( atomnum2 == 0 ) 
       					continue;
 
-      				calls4++;
+      				//calls4++;
 					//beginTimer(test);
       				for (int n1=cell1*MAXPERCELL,count1=0; count1<atomnum1; count1++,n1++)
          			{
          				int id1 = atoms->id[n1];
          				for (int n2=cell2*MAXPERCELL,count2=0; count2<atomnum2; count2++,n2++)
             			{
-            				//beginTimer(force);
-            				calls5++;
+            				
+            				//calls5++;
             				int id2 = atoms->id[n2];
 
            					double3 r_vector;
@@ -105,16 +105,16 @@ void  computeForce(struct SystemStr* sys){
            					if (cell2 < cells->myCellNum && id2 <= id1 ) // <=  or < ???
                   				continue; // 防止重复计算
 
-                  			calls6++;
+                  			//calls6++;
                   			for (int i=0; i<3; i++)
-               				{
+               				{ 
                   				r_vector[i] = atoms->pos[n1][i]-atoms->pos[n2][i];
-                  				r_scalar += r_vector[i]*r_vector[i];
+                  				r_scalar += r_vector [i]*r_vector[i];
                				}
 
                				if ( r_scalar > /*rCut2*/cutoff*cutoff) 
                					continue;
-               				calls7++;
+               				//calls7++;
                				//r_scalar = 1.0/r_scalar;
                				//double r6 = s6 * (r_scalar*r_scalar*r_scalar);
 
@@ -124,7 +124,7 @@ void  computeForce(struct SystemStr* sys){
                   			//	atoms->force[n1][m] -= r_vector[m]*fr;
                   			//	atoms->force[n2][m] += r_vector[m]*fr;
                				//}
-               				
+               				beginTimer(force);
                				 r_scalar = sqrt(r_scalar);
 
                				 double force_scalar = 0.0;
@@ -136,8 +136,8 @@ void  computeForce(struct SystemStr* sys){
                				 {
                   	 			atoms->force[n1][i] -= (r_vector[i]/r_scalar)*force_scalar;
                   	 			atoms->force[n2][i] += (r_vector[i]/r_scalar)*force_scalar;
-               				 }
-               				//endTimer(force);
+               				 } 
+               				endTimer(force);
    						}        
             		}
             		
@@ -146,5 +146,5 @@ void  computeForce(struct SystemStr* sys){
          		//printf("calls:%d\n",calls );
     }
     //endTimer(force);
-	printf("calls1: %d calls2: %d calls3: %d calls4: %d calls5: %d calls6: %d calls7: %d\n",calls1,calls2,calls3,calls4,calls5,calls6,calls7);
+	//printf("calls1: %d calls2: %d calls3: %d calls4: %d calls5: %d calls6: %d calls7: %d\n",calls1,calls2,calls3,calls4,calls5,calls6,calls7);
 }
