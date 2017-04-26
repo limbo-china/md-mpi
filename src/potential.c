@@ -74,8 +74,9 @@ void  computeForce(struct SystemStr* sys){
 
       	//calls2++;
       	int3 cell1xyz,cell2xyz;
+      	beginTimer(test);
       	getXYZByCell(cells,cell1xyz,cell1);
-
+      	endTimer(test);
    		for(cell2xyz[0]=cell1xyz[0]-1;cell2xyz[0]<=cell1xyz[0]+1;cell2xyz[0]++)
    			for(cell2xyz[1]=cell1xyz[1]-1;cell2xyz[1]<=cell1xyz[1]+1;cell2xyz[1]++)
    				for(cell2xyz[2]=cell1xyz[2]-1;cell2xyz[2]<=cell1xyz[2]+1;cell2xyz[2]++)
