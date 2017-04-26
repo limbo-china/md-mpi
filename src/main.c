@@ -47,9 +47,9 @@ int main(int argc, char** argv){
     	adjustAtoms(sys);
     	endTimer(adjustatom);
 
-    	beginTimer(force);
+    	//beginTimer(force);
     	computeForce(sys);
-    	endTimer(force);
+    	//endTimer(force);
 
     	updateMomenta(sys, para); 
     	if(i%para->printNums == 0){
@@ -76,7 +76,7 @@ int main(int argc, char** argv){
 		//fprintf(stdout, "adjust time: %g\n",getGlobalTime(adjustatom));
 		fprintf(stdout, "通信时间: %g\n",getGlobalTime(communication));
 		fprintf(stdout, "计算力时间: %g\n------\n",getGlobalTime(force));
-		//fprintf(stdout, "test time: %g\n",getGlobalTime(test));
+		fprintf(stdout, "test time: %g\n",getGlobalTime(test));
 	}
 
 	MPI_Finalize();
