@@ -17,12 +17,12 @@ void initPotInfo(Potential** pot){
 	Potential* potential= *pot;
 	
 	strcpy(potential->potentialType,"Morse");
-	 potential->De = 0.3429;	                  
-	 	potential->re = 2.866;
-		potential->Beta = 1.3588;
-	 	potential->cutoff = 5.7875;
-	//potential->sigma = 2.315;	                  // Angstrom
-   //potential->epsilon = 0.167;
+	 // potential->De = 0.3429;	                  
+	 // 	potential->re = 2.866;
+		// potential->Beta = 1.3588;
+	  	potential->cutoff = 5.7875;
+	potential->sigma = 2.315;	                  // Angstrom
+   potential->epsilon = 0.167;
 
 		//potential->computeforce = computeForce;
 		//potential->free = potentialFree;
@@ -38,18 +38,18 @@ void potentialFree(Potential* potential){
 void  computeForce(struct SystemStr* sys){
 
 	Potential* potential = sys->potential;
-		 double De = potential->De;
-		 double Beta = potential->Beta;
-		double re = potential->re;
-		 double cutoff = potential->cutoff;
-	//double sigma = potential->sigma;
-   //double epsilon = potential->epsilon;
-   //double rCut = potential->cutoff;
-   //double rCut2 = rCut*rCut;
+		//  double De = potential->De;
+		//  double Beta = potential->Beta;
+		// double re = potential->re;
+		//  double cutoff = potential->cutoff;
+	double sigma = potential->sigma;
+   double epsilon = potential->epsilon;
+   double rCut = potential->cutoff;
+   double rCut2 = rCut*rCut;
 
-    //double s6 = sigma*sigma*sigma*sigma*sigma*sigma;
+    double s6 = sigma*sigma*sigma*sigma*sigma*sigma;
 
-   //double rCut6 = s6 / (rCut2*rCut2*rCut2);
+   double rCut6 = s6 / (rCut2*rCut2*rCut2);
 
 		Cell* cells = sys->cells;
 	Atom* atoms = sys->atoms;
@@ -118,29 +118,29 @@ void  computeForce(struct SystemStr* sys){
                					continue;
                				}
                				//calls7++;
-               				//r_scalar = 1.0/r_scalar;
-               				//double r6 = s6 * (r_scalar*r_scalar*r_scalar);
+               				r_scalar = 1.0/r_scalar;
+               				double r6 = s6 * (r_scalar*r_scalar*r_scalar);
 
-               				//double fr = - 4.0*epsilon*r6*r_scalar*(12.0*r6 - 6.0);
-              				 //for (int m=0; m<3; m++)
-               				//{
-                  			//	atoms->force[n1][m] -= r_vector[m]*fr;
-                  			//	atoms->force[n2][m] += r_vector[m]*fr;
-               				//}
-               				beginTimer(force);
-               				 r_scalar = sqrt(r_scalar);
+               				double fr = - 4.0*epsilon*r6*r_scalar*(12.0*r6 - 6.0);
+              				 for (int m=0; m<3; m++)
+               				{
+                  				atoms->force[n1][m] -= r_vector[m]*fr;
+                  				atoms->force[n2][m] += r_vector[m]*fr;
+               				}
+               				//beginTimer(force);
+               				 // r_scalar = sqrt(r_scalar);
 
-               				 double force_scalar = 0.0;
+               				 // double force_scalar = 0.0;
 
-               				 double t = 1.0/(exp(Beta*(r_scalar-re)));
-               				 force_scalar = 2*Beta*De*(t-t*t);
+               				 // double t = 1.0/(exp(Beta*(r_scalar-re)));
+               				 // force_scalar = 2*Beta*De*(t-t*t);
  
-               				 for (int i=0; i<3; i++)
-               				 {
-                  	 			atoms->force[n1][i] -= (r_vector[i]/r_scalar)*force_scalar;
-                  	 			atoms->force[n2][i] += (r_vector[i]/r_scalar)*force_scalar;
-               				 } 
-               				endTimer(force); 
+               				 // for (int i=0; i<3; i++)
+               				 // {
+                  	 // 			atoms->force[n1][i] -= (r_vector[i]/r_scalar)*force_scalar;
+                  	 // 			atoms->force[n2][i] += (r_vector[i]/r_scalar)*force_scalar;
+               				 // } 
+               				//endTimer(force); 
    						}  
    						    
             		}

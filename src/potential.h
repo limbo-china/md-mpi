@@ -10,13 +10,13 @@ typedef struct PotentialStr{
 	
 	char potentialType[30]; //势函数类型
 	
-	 double De;
-    	double re;
-    	double Beta;
+	 // double De;
+  //   	double re;
+  //   	double Beta;
 
     	double cutoff; //截断距离
-	///double sigma;
-   //double epsilon;
+	/double sigma;
+   double epsilon;
 
 	//void  (*computeforce)(struct SystemStr* sys); // 计算相互作用力的函数
    	//可以单独拿出来 void (*print)(FILE* f, Potential* potential); // 打印势函数相关信息的函数
