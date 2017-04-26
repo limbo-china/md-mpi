@@ -15,7 +15,7 @@ typedef struct PotentialStr{
   //   	double Beta;
 
     	double cutoff; //截断距离
-	/double sigma;
+	double sigma;
    double epsilon;
 
 	//void  (*computeforce)(struct SystemStr* sys); // 计算相互作用力的函数
