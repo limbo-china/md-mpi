@@ -20,7 +20,7 @@ void initPotInfo(Potential** pot){
 	 potential->De = 0.3429;	                  
 	 	potential->re = 2.866;
 		potential->Beta = 1.3588;
-	 	potential->cutoff = 6.0;
+	 	potential->cutoff = 5.7875;
 	//potential->sigma = 2.315;	                  // Angstrom
    //potential->epsilon = 0.167;
 
