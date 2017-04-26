@@ -43,9 +43,9 @@ int main(int argc, char** argv){
 
     	updatePosition(sys, para);
 
-    	beginTimer(adjustatom);
+    	//beginTimer(adjustatom);
     	adjustAtoms(sys);
-    	endTimer(adjustatom);
+    	//endTimer(adjustatom);
 
     	//beginTimer(force);
     	computeForce(sys);
@@ -73,7 +73,7 @@ int main(int argc, char** argv){
 	{
 		//fprintf(stdout, "total time: %g\n",getGlobalTime(total));
 		fprintf(stdout, "\n------\n循环时间: %g\n",getGlobalTime(loop));
-		//fprintf(stdout, "adjust time: %g\n",getGlobalTime(adjustatom));
+		fprintf(stdout, "adjust time: %g\n",getGlobalTime(adjustatom));
 		fprintf(stdout, "通信时间: %g\n",getGlobalTime(communication));
 		fprintf(stdout, "计算力时间: %g\n------\n",getGlobalTime(force));
 		fprintf(stdout, "test time: %g\n",getGlobalTime(test));
