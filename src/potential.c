@@ -82,9 +82,9 @@ void  computeForce(struct SystemStr* sys){
    				for(cell2xyz[2]=cell1xyz[2]-1;cell2xyz[2]<=cell1xyz[2]+1;cell2xyz[2]++)
    				{
    					//calls3++;
-   					beginTimer(test);
+   					
    					int cell2 = findCellByXYZ(cells,cell2xyz);
-					endTimer(test);
+	
    					int atomnum2 = cells->atomNum[cell2];
    					if ( atomnum2 == 0 ) 
       					continue;
@@ -101,18 +101,17 @@ void  computeForce(struct SystemStr* sys){
             				//calls5++;
             				int id2 = atoms->id[n2];
 
-           					double3 r_vector;
-           					double r_scalar = 0.0;
-
            					if (cell2 < cells->myCellNum && id2 <= id1 ){ // <=  or < ???
                   				continue; // 防止重复计算
                   			}
 
+                  			double3 r_vector;
+           					double r_scalar = 0.0;
                   			//calls6++;
                   			for (int i=0; i<3; i++)
                				{ 
                   				r_vector[i] = atoms->pos[n1][i]-atoms->pos[n2][i];
-                  				r_scalar += r_vector [i]*r_vector[i];
+                  				r_scalar += r_vector[i]*r_vector[i];
                				}
 
                				if ( r_scalar > /*rCut2*/cutoff*cutoff) {
@@ -128,7 +127,7 @@ void  computeForce(struct SystemStr* sys){
                   			//	atoms->force[n1][m] -= r_vector[m]*fr;
                   			//	atoms->force[n2][m] += r_vector[m]*fr;
                				//}
-               				//beginTimer(force);
+               				beginTimer(force);
                				 r_scalar = sqrt(r_scalar);
 
                				 double force_scalar = 0.0;
@@ -141,7 +140,7 @@ void  computeForce(struct SystemStr* sys){
                   	 			atoms->force[n1][i] -= (r_vector[i]/r_scalar)*force_scalar;
                   	 			atoms->force[n2][i] += (r_vector[i]/r_scalar)*force_scalar;
                				 } 
-               				//endTimer(force); 
+               				endTimer(force); 
    						}  
    						    
             		}
