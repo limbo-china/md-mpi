@@ -1,6 +1,6 @@
 BIN = ./bin/md-mpi
 CC = mpicc
-CFLAGS = -std=c99 -Wall -g 
+CFLAGS = -std=c99 -g -O5 
 INC = -I ./src 
 SRC = $(wildcard src/*.c)
 LIB = -lm
