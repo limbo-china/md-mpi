@@ -103,7 +103,7 @@ void  computeForce(struct SystemStr* sys){
 
            					if (cell2 < cells->myCellNum && id2 <= id1 ){ // <=  or < ???
                   				continue; // 防止重复计算
-                  			}
+                  			} 
 
                   			double3 r_vector;
            					double r_scalar = 0.0;
