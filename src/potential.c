@@ -114,7 +114,7 @@ void  computeForce(struct SystemStr* sys){
                   				r_scalar += r_vector[i]*r_vector[i];
                				}
 
-               				if ( r_scalar > /*rCut2*/cutoff*cutoff) {
+               				if ( r_scalar > rCut2/*cutoff*cutoff*/) {
                					continue;
                				}
                				//calls7++;
