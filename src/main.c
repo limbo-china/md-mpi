@@ -18,6 +18,11 @@ int main(int argc, char** argv){
 	MPI_Init(&argc, &argv);
 	initRank();
 
+	char processor_name[20];
+	int name_len;
+	MPI_Get_processor_name(processor_name, &name_len);
+
+	fprintf(stdout, "%s\n",processor_name);
 	//fprintf(stdout, "rankNums: %d\n", getRankNums());
 	//fprintf(stdout, "myRank: %d\n", getMyRank());
 
@@ -42,13 +47,9 @@ int main(int argc, char** argv){
     	adjustAtoms(sys);
     	endTimer(adjustatom);
 
-    	do{
-    		beginTimer(force);
-    	}while(0);
+    	beginTimer(force);
     	computeForce(sys);
-		do{
-    		endTimer(force);
-    	}while(0);
+    	endTimer(force);
 
     	updateMomenta(sys, para); 
     	if(i%para->printNums == 0){
