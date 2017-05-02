@@ -38,6 +38,7 @@ int main(int argc, char** argv){
 	//sleep(5);
 	System* sys = initSystem(para);
 
+
 	for(int i=1;i<=para->stepNums;i++){
     	updateMomenta(sys, para); 
 
@@ -65,6 +66,10 @@ int main(int argc, char** argv){
     	}
     }
 	endTimer(loop);
+
+	//beginTimer(test);
+    //MPI_Win_free(win);
+    //endTimer(test);
 	
 
 	endTimer(total);
