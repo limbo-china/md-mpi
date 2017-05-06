@@ -2,6 +2,7 @@
 
 #include "space.h"
 #include "potential.h"
+#include "mympi.h"
 
 #include <math.h>
 #include <stdlib.h>
@@ -35,6 +36,20 @@ void initCells(struct SpacialStr* space, struct PotentialStr* potential, struct 
    	// 初始化各细胞中原子数为0
    	for (int i = 0; i < cells->totalCellNum; i++)
       	cells->atomNum[i] = 0;
+
+    ///test 测试cell坐标正确性
+
+    if(getMyRank()== 1){
+        int3 xyz;
+        int j;
+        for(int i = 0; i < cells->totalCellNum; i++)
+        {
+            getXYZByCell(cells,xyz, i);
+            printf("i: %d xyz:%d %d %d\n",i,xyz[0],xyz[1],xyz[2]);
+            j = findCellByXYZ(cells, xyz);
+            printf("j: %d xyz:%d %d %d\n\n",j,xyz[0],xyz[1],xyz[2]);
+        }
+    }
 }
 
 // 根据原子坐标找到所在的细胞
