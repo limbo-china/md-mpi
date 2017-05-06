@@ -40,7 +40,7 @@ void initCells(struct SpacialStr* space, struct PotentialStr* potential, struct 
 
     ///test 测试cell坐标正确性
 
-    if(getMyRank()== 1){
+    if(getMyRank()== 5){
         int3 xyz;
         int j;
         for(int i = 0; i < cells->totalCellNum; i++)
