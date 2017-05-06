@@ -5,6 +5,7 @@
 #include "mympi.h"
 
 #include <math.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 // 初始化细胞链表
