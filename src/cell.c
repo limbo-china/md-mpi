@@ -40,17 +40,17 @@ void initCells(struct SpacialStr* space, struct PotentialStr* potential, struct 
 
     ///test 测试cell坐标正确性
 
-    if(getMyRank()== 5){
-        int3 xyz;
-        int j;
-        for(int i = 0; i < cells->totalCellNum; i++)
-        {
-            getXYZByCell(cells,xyz, i);
-            printf("i: %d xyz:%d %d %d\n",i,xyz[0],xyz[1],xyz[2]);
-            j = findCellByXYZ(cells, xyz);
-            printf("j: %d xyz:%d %d %d\n\n",j,xyz[0],xyz[1],xyz[2]);
-        }
-    }
+    // if(getMyRank()== 5){
+    //     int3 xyz;
+    //     int j;
+    //     for(int i = 0; i < cells->totalCellNum; i++)
+    //     {
+    //         getXYZByCell(cells,xyz, i);
+    //         printf("i: %d xyz:%d %d %d\n",i,xyz[0],xyz[1],xyz[2]);
+    //         j = findCellByXYZ(cells, xyz);
+    //         printf("j: %d xyz:%d %d %d\n\n",j,xyz[0],xyz[1],xyz[2]);
+    //     }
+    // }
 }
 
 // 根据原子坐标找到所在的细胞
