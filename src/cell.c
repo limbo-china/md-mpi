@@ -177,3 +177,13 @@ void getXYZByCell(Cell* cells,int *xyz, int num){
         xyz[2]--;
     }
 }
+
+// // 根据细胞位置xyz,返回在共享内存中的细胞序号,若不是共享内存内,则返回-1
+// int getSMCellByXYZ(Cell* cells, int* xyz){
+
+//     int *xyzCellNum = cells->xyzCellNum;
+//     //如果不在共享内存范围内
+//     if(xyz[0]>0 && (xyz[0]<xyzCellNum[0]-1)&&xyz[1]>0 && (xyz[1]<xyzCellNum[1]-1)&&xyz[2]>0 && (xyz[2]<xyzCellNum[2]-1)){
+//         return -1;   
+//     }
+// }     
